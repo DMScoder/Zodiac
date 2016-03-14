@@ -34,8 +34,6 @@ public class SpacePlane implements Plane{
 
     SurfacePlane surface;
     OrthographicCamera camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-    Group starships;
-    Group projectiles;
     Texture planetBackground;
     Sprite sprite;
     static boolean ACTIVE = true;
@@ -49,7 +47,7 @@ public class SpacePlane implements Plane{
         pixmap.dispose();
         sprite = new Sprite(planetBackground);
         sprite.setPosition(0,0);
-        starships = new Group();
+        sprite.setScale(100);
     }
 
     @Override
@@ -97,12 +95,11 @@ public class SpacePlane implements Plane{
     }
 
     @Override
-    public Actor planeSwitch() {
+    public void planeSwitch() {
         if(ACTIVE)
             ACTIVE = false;
         else
             ACTIVE = true;
-        return starships;
     }
 
     @Override

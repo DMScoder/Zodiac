@@ -13,7 +13,7 @@ public interface Plane {
     void update();
     void clicked();
     void boxSelect();
-    Actor planeSwitch();
+    void planeSwitch();
     void addPlane(Plane plane);
     OrthographicCamera getCamera();
 }

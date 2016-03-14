@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by SYSTEM on 3/10/2016.
  */
 public class Utilities {
-
+/*
     public static Random random = new Random();
 
     public static int getRandomInt(int min, int max)
@@ -29,5 +29,5 @@ public class Utilities {
     public static float distanceReal(GameObject one, GameObject two)
     {
         return (float)(Math.sqrt(Math.pow(one.getX()-two.getX(),2)+Math.pow(one.getY()-two.getY(),2)));
-    }
+    }*/
 }

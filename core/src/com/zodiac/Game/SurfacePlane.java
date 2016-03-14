@@ -4,13 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.Group;
+
 import com.zodiac.Assets;
 import com.zodiac.Settings;
+import com.zodiac.entity.GameObject;
 
 /**
  * Created by SYSTEM on 3/10/2016.
@@ -19,16 +17,12 @@ public class SurfacePlane implements Plane{
 
     OrthographicCamera camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     SpacePlane space;
-    Group projectiles;
-    Group units;
-    Sprite sprite;
+    GameObject scout;
     static boolean ACTIVE = false;
 
     public SurfacePlane()
     {
-        sprite = new Sprite(Assets.federationScout);
-        sprite.setPosition(0,0);
-        units = new Group();
+        scout = new GameObject(0,0,Assets.federationScout);
     }
 
     @Override
@@ -40,8 +34,31 @@ public class SurfacePlane implements Plane{
         camera.update();
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
-        sprite.draw(batch);
+        drawSurface(batch);
+        drawDecals(batch);
+        drawUnits(batch);
+        drawFlying(batch); //Includes clouds
         batch.end();
+    }
+
+    public void drawSurface(Batch batch)
+    {
+
+    }
+
+    public void drawDecals(Batch batch)
+    {
+
+    }
+
+    public void drawUnits(Batch batch)
+    {
+
+    }
+
+    public void drawFlying(Batch batch)
+    {
+
     }
 
     @Override
@@ -77,12 +94,11 @@ public class SurfacePlane implements Plane{
     }
 
     @Override
-    public Actor planeSwitch() {
+    public void planeSwitch() {
         if(ACTIVE)
             ACTIVE = false;
         else
             ACTIVE = true;
-        return units;
     }
 
     @Override

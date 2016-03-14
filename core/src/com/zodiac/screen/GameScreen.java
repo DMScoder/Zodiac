@@ -20,7 +20,6 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
     SurfacePlane surface;
     SpacePlane space;
     Plane activePlane;
-    Stage stage;
 
     public GameScreen(SpaceAssault game)
     {
@@ -31,16 +30,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
     private void init()
     {
         initPlane();
-        initStage();
-    }
-
-    private void initStage()
-    {
-        stage = new Stage();
-        InputMultiplexer plexor = new InputMultiplexer();
-        plexor.addProcessor(stage);
-        plexor.addProcessor(this);
-        Gdx.input.setInputProcessor(plexor);
+        Gdx.input.setInputProcessor(this);
     }
 
     private void initPlane()
@@ -72,8 +62,8 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
     public void planeSwitch()
     {
         switchAnimation();
-        activePlane.planeSwitch();
-        stage.clear();
+        surface.planeSwitch();
+        space.planeSwitch();
         if(activePlane==space)
         {
             activePlane = surface;
@@ -82,8 +72,6 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
         {
             activePlane = space;
         }
-        stage.getViewport().setCamera(activePlane.getCamera());
-        stage.addActor(activePlane.planeSwitch());
     }
 
     private void switchAnimation()

@@ -2,26 +2,27 @@ package com.zodiac.entity;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.math.Polygon;
 
 /**
  * Created by SYSTEM on 3/10/2016.
  */
-public class GameObject extends Actor{
+public class GameObject {
 
     Texture texture;
+    public Polygon polygon;
 
     public GameObject(float x, float y,Texture texture)
     {
         this.texture = texture;
-        setBounds(x,y,texture.getWidth(),texture.getHeight());
+        polygon = new Polygon(new float[]{0,0,texture.getWidth(),0,texture.getWidth(),texture.getHeight(),0,texture.getHeight()});
+        polygon.setPosition(x,y);
     }
 
-    @Override
-    public void draw(Batch batch, float alpha)
+    public void draw(Batch batch)
     {
-        batch.draw(texture,this.getX(),getY(),this.getOriginX(),this.getOriginY(),this.getWidth(),
-                this.getHeight(),this.getScaleX(), this.getScaleY(),this.getRotation(),0,0,
+        batch.draw(texture,polygon.getX(),polygon.getY(),polygon.getOriginX(),polygon.getOriginY(),texture.getWidth(),
+                texture.getHeight(),polygon.getScaleX(), polygon.getScaleY(),polygon.getRotation(),0,0,
                 texture.getWidth(),texture.getHeight(),false,false);
     }
 }
