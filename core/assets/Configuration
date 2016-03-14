@@ -1,0 +1,6 @@
+pan_up w
+pan_down s
+pan_left a
+pan_right d
+toggle_overlay enter
+switch_plane space
