@@ -16,6 +16,7 @@ public class GameObject {
     {
         this.texture = texture;
         polygon = new Polygon(new float[]{0,0,texture.getWidth(),0,texture.getWidth(),texture.getHeight(),0,texture.getHeight()});
+        polygon.setOrigin(texture.getWidth()/2,texture.getHeight()/2);
         polygon.setPosition(x,y);
     }
 

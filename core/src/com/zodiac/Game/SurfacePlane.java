@@ -5,10 +5,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
-
-import com.zodiac.Assets;
 import com.zodiac.Settings;
 import com.zodiac.entity.GameObject;
+
+import java.util.ArrayList;
 
 /**
  * Created by SYSTEM on 3/10/2016.
@@ -17,12 +17,19 @@ public class SurfacePlane implements Plane{
 
     OrthographicCamera camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     SpacePlane space;
-    GameObject scout;
+    ArrayList[] Entities = new ArrayList[4];
+    ArrayList Ground_Units;
+    ArrayList Projectiles;
+    ArrayList Flying_Units;
+    ArrayList Decals;
     static boolean ACTIVE = false;
 
     public SurfacePlane()
     {
-        scout = new GameObject(0,0,Assets.federationScout);
+        Entities[0] = Ground_Units;
+        Entities[1] = Projectiles;
+        Entities[2] = Flying_Units;
+        Entities[3] = Decals;
     }
 
     @Override
@@ -33,32 +40,10 @@ public class SurfacePlane implements Plane{
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
         batch.setProjectionMatrix(camera.combined);
+
         batch.begin();
-        drawSurface(batch);
-        drawDecals(batch);
-        drawUnits(batch);
-        drawFlying(batch); //Includes clouds
+        SurfaceRender.draw(batch);
         batch.end();
-    }
-
-    public void drawSurface(Batch batch)
-    {
-
-    }
-
-    public void drawDecals(Batch batch)
-    {
-
-    }
-
-    public void drawUnits(Batch batch)
-    {
-
-    }
-
-    public void drawFlying(Batch batch)
-    {
-
     }
 
     @Override
