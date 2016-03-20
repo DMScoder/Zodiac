@@ -10,6 +10,7 @@ import com.badlogic.gdx.math.Polygon;
 public class GameObject {
 
     Texture texture;
+    private float zHeight = 0;
     public Polygon polygon;
 
     public GameObject(float x, float y,Texture texture)
@@ -25,5 +26,13 @@ public class GameObject {
         batch.draw(texture,polygon.getX(),polygon.getY(),polygon.getOriginX(),polygon.getOriginY(),texture.getWidth(),
                 texture.getHeight(),polygon.getScaleX(), polygon.getScaleY(),polygon.getRotation(),0,0,
                 texture.getWidth(),texture.getHeight(),false,false);
+    }
+
+    public float getzHeight() {
+        return zHeight;
+    }
+
+    public void setzHeight(float zHeight) {
+        this.zHeight = zHeight;
     }
 }

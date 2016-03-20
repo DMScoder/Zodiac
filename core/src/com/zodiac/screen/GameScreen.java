@@ -1,14 +1,15 @@
 package com.zodiac.screen;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputMultiplexer;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.*;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.zodiac.Assets;
 import com.zodiac.Game.Plane;
 import com.zodiac.Game.SpacePlane;
 import com.zodiac.Game.SurfacePlane;
 import com.zodiac.Settings;
+import com.zodiac.SoundManager;
 import com.zodiac.SpaceAssault;
 
 /**
@@ -16,13 +17,20 @@ import com.zodiac.SpaceAssault;
  */
 public class GameScreen extends ScreenAdapter implements InputProcessor {
 
+    ShapeRenderer renderer = new ShapeRenderer();
     SpaceAssault game;
     SurfacePlane surface;
     SpacePlane space;
     Plane activePlane;
+    boolean dragging;
+    int startDragX;
+    int startDragY;
+    int endDragX;
+    int endDragY;
 
     public GameScreen(SpaceAssault game)
     {
+        SoundManager.PlayMusic(Assets.Game_Music);
         this.game=game;
         init();
     }
@@ -57,34 +65,23 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
     {
         draw();
         update();
+        if(dragging)
+        {
+            renderer.begin(ShapeRenderer.ShapeType.Line);
+            renderer.setColor(Color.GREEN);
+            renderer.rect(startDragX,startDragY,endDragX-startDragX,endDragY-startDragY);
+            renderer.end();
+        }
     }
 
     public void planeSwitch()
     {
-        switchAnimation();
         surface.planeSwitch();
         space.planeSwitch();
         if(activePlane==space)
-        {
             activePlane = surface;
-        }
         else
-        {
             activePlane = space;
-        }
-    }
-
-    private void switchAnimation()
-    {
-        if(activePlane == surface)
-        {
-
-        }
-
-        else
-        {
-
-        }
     }
 
     @Override
@@ -109,22 +106,42 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
+        activePlane.clicked(screenX,screenY,button);
+        startDragX = screenX;
+        startDragY = Gdx.graphics.getHeight()-screenY;
+        endDragX = startDragX;
+        endDragY = startDragY;
+
+        return true;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+
+        if(dragging)
+        {
+            dragging = false;
+            activePlane.boxSelect(startDragX,startDragY,endDragX-startDragX,endDragY-startDragY);
+        }
+
         return false;
     }
 
     @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
+    public boolean touchDragged(int screenX, int screenY, int pointer)
+    {
+        if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+            dragging = true;
+            endDragX = screenX;
+            endDragY = Gdx.graphics.getHeight() - screenY;
+        }
+
+        return true;
     }
 
     @Override
     public boolean mouseMoved(int screenX, int screenY) {
-        return false;
+        return true;
     }
 
     @Override

@@ -11,8 +11,8 @@ public interface Plane {
 
     void draw(Batch batch);
     void update();
-    void clicked();
-    void boxSelect();
+    void clicked(int x, int y, int button);
+    void boxSelect(int startX, int startY, int endX, int endY);
     void planeSwitch();
     void addPlane(Plane plane);
     OrthographicCamera getCamera();

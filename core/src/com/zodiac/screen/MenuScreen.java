@@ -11,8 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.zodiac.Assets;
+import com.zodiac.SoundManager;
 import com.zodiac.SpaceAssault;
-import com.zodiac.entity.GameObject;
 
 /**
  * Created by SYSTEM on 3/10/2016.
@@ -47,6 +47,8 @@ public class MenuScreen extends ScreenAdapter {
                     return true;
                 }
             });
+
+            SoundManager.PlayMusic(Assets.Main_Menu_Music);
         }
 
         @Override
@@ -84,7 +86,7 @@ public class MenuScreen extends ScreenAdapter {
         gl.glClearColor(0,0,0,0);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         game.batch.begin();
-        game.batch.draw(Assets.menuBackground,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        game.batch.draw(Assets.Menu_Background,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         game.batch.end();
         stage.draw();
     }
@@ -94,6 +96,7 @@ public class MenuScreen extends ScreenAdapter {
         switch(option){
             case(GAME):
                 this.dispose();
+                SoundManager.StopMusic();
                 game.setScreen(new GameScreen(game));
                 break;
             case(SETTINGS):
@@ -108,16 +111,16 @@ public class MenuScreen extends ScreenAdapter {
 
     private void initObjects()
     {
-        MenuButton game = new MenuButton(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()-300,GAME,this,Assets.testTexture);
+        MenuButton game = new MenuButton(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()-300,GAME,this,Assets.Test_Texture);
         stage.addActor(game);
 
-        MenuButton load = new MenuButton(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()-400,LOAD,this,Assets.testTexture);
+        MenuButton load = new MenuButton(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()-400,LOAD,this,Assets.Test_Texture);
         stage.addActor(load);
 
-        MenuButton settings = new MenuButton(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()-500,SETTINGS,this,Assets.testTexture);
+        MenuButton settings = new MenuButton(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()-500,SETTINGS,this,Assets.Test_Texture);
         stage.addActor(settings);
 
-        MenuButton exit = new MenuButton(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()-600,EXIT,this,Assets.testTexture);
+        MenuButton exit = new MenuButton(Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()-600,EXIT,this,Assets.Test_Texture);
         stage.addActor(exit);
     }
 

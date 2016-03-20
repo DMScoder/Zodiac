@@ -13,4 +13,5 @@ public class Settings {
     public static int PAN_RIGHT = Input.Keys.D;
     public static int TOGGLE_PLANE = Input.Keys.SPACE;
     public static int TOGGLE_OVERLAY = Input.Keys.ENTER;
+    public static int TOGGLE_CAMERA_SPEED = Input.Keys.SHIFT_LEFT;
 }
