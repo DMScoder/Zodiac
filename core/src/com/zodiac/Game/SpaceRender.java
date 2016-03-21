@@ -3,7 +3,6 @@ package com.zodiac.Game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.zodiac.Assets;
 import com.zodiac.entity.Unit;
 
 import java.util.ArrayList;
@@ -14,12 +13,13 @@ import java.util.ArrayList;
 public class SpaceRender {
 
     private static Texture planetTexture;
-    public static float planetX;
-    public static float planetY;
+    private static float planetX;
+    private static float planetY;
     private static float planetDistance;
     private static float planetScale;
     private static ShapeRenderer shapeRenderer = new ShapeRenderer();
-
+    public static float OffsetX=0;
+    public static float OffsetY=0;
 
     public static void setPlanet(Texture texture, float x, float y, float distance, float scale)
     {
@@ -40,7 +40,7 @@ public class SpaceRender {
 
     public static void drawBackground(Batch batch)
     {
-        batch.draw(planetTexture,0,0,planetTexture.getWidth()/2,planetTexture.getHeight()/2,planetTexture.getWidth(),
+        batch.draw(planetTexture,planetX+OffsetX*.8f,planetY+OffsetY*.8f,planetTexture.getWidth()/2,planetTexture.getHeight()/2,planetTexture.getWidth(),
                 planetTexture.getHeight(),planetScale,planetScale,0,0,0,
                 planetTexture.getWidth(),planetTexture.getHeight(),false,false);
     }

@@ -1,4 +1,4 @@
-package com.zodiac;
+package com.zodiac.Support;
 
 import com.badlogic.gdx.Input;
 

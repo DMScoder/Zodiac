@@ -11,7 +11,7 @@ public class GameObject {
 
     Texture texture;
     private float zHeight = 0;
-    public Polygon polygon;
+    private Polygon polygon;
 
     public GameObject(float x, float y,Texture texture)
     {
@@ -26,6 +26,10 @@ public class GameObject {
         batch.draw(texture,polygon.getX(),polygon.getY(),polygon.getOriginX(),polygon.getOriginY(),texture.getWidth(),
                 texture.getHeight(),polygon.getScaleX(), polygon.getScaleY(),polygon.getRotation(),0,0,
                 texture.getWidth(),texture.getHeight(),false,false);
+    }
+
+    public Polygon getPolygon() {
+        return polygon;
     }
 
     public float getzHeight() {

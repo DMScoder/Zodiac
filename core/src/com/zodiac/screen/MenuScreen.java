@@ -10,8 +10,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.zodiac.Assets;
-import com.zodiac.SoundManager;
+import com.zodiac.Support.Assets;
+import com.zodiac.Support.SoundManager;
 import com.zodiac.SpaceAssault;
 
 /**

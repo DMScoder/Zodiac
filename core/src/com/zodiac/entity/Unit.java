@@ -1,10 +1,10 @@
 package com.zodiac.entity;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.zodiac.Assets;
-import com.zodiac.Utilities;
+import com.zodiac.Support.Assets;
+import com.zodiac.Support.Constant_Names;
+import com.zodiac.Support.Utilities;
 
 /**
  * Created by Immortan on 3/19/2016.
@@ -34,10 +34,10 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
     public void Stats()
     {
-        if(type==UnitTypes.FEDERATION_MAIN_TANK)
+        if(type== Constant_Names.FEDERATION_MAIN_TANK)
         {
             turrets = new Turret[1];
-            turrets[0] = new Turret(getPolygon().getX(),getPolygon().getY(),UnitTypes.FEDERATION_MAIN_TANK_TURRET);
+            turrets[0] = new Turret(getPolygon().getX(),getPolygon().getY(), Constant_Names.FEDERATION_MAIN_TANK_TURRET);
             maxSpeed = 4;
             turnRate = 1;
         }
@@ -58,34 +58,40 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         if(moveCoordinates==null)
             return;
 
-        float targetAngle = (float)Math.atan2(moveCoordinates.x-polygon.getX(),moveCoordinates.y-polygon.getY());
+        System.out.println(moveCoordinates.x+" "+moveCoordinates.y);
+
+        float targetAngle = (float)Math.atan2(moveCoordinates.x-getPolygon().getX(),moveCoordinates.y- getPolygon().getY());
         targetAngle = (float)Math.toDegrees(targetAngle);
 
         float dx = speed * -(float)Math.cos(Math.toRadians(targetAngle+90));
         float dy = speed * (float)Math.sin(Math.toRadians(targetAngle+90));
 
 
-        if(moveCoordinates.x<polygon.getX())
+        if(moveCoordinates.x< getPolygon().getX())
         {
-            if (Math.abs(targetAngle) > polygon.getRotation())
-                polygon.setRotation(polygon.getRotation() + turnRate);
+            if (Math.abs(targetAngle) > getPolygon().getRotation())
+                getPolygon().setRotation(getPolygon().getRotation() + turnRate);
             else
-                polygon.setRotation(polygon.getRotation() - turnRate);
+                getPolygon().setRotation(getPolygon().getRotation() - turnRate);
         }
 
         else
         {
-            if (360-targetAngle > polygon.getRotation())
-                polygon.setRotation(polygon.getRotation() + turnRate);
+            if (360-targetAngle > getPolygon().getRotation())
+                getPolygon().setRotation(getPolygon().getRotation() + turnRate);
             else
-                polygon.setRotation(polygon.getRotation() - turnRate);
+                getPolygon().setRotation(getPolygon().getRotation() - turnRate);
         }
 
-        this.polygon.setPosition(polygon.getX()+dx,polygon.getY()+dy);
+        this.getPolygon().setPosition(getPolygon().getX()+dx, getPolygon().getY()+dy);
 
         if(turrets!=null)
             for(int i = 0; i< turrets.length;i++)
+            {
                 turrets[i].getPolygon().setPosition(turrets[i].getPolygon().getX()+dx,turrets[i].getPolygon().getY()+dy);
+                if(target==null)
+                    turrets[i].getPolygon().setRotation(getPolygon().getRotation());
+            }
 
         if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)<speed*10)
         {
@@ -146,6 +152,7 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
     @Override
     public void move(Vector2 vector2) {
+        System.out.println(vector2.x+" "+vector2.y);
         moveCoordinates = vector2;
     }
 
@@ -162,10 +169,7 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         this.target = target;
     }
 
-    @Override
-    public Polygon getPolygon() {
-        return polygon;
-    }
+
 
     @Override
     public void select() {

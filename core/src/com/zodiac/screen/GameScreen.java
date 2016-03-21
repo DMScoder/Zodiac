@@ -3,13 +3,11 @@ package com.zodiac.screen;
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.zodiac.Assets;
 import com.zodiac.Game.Plane;
 import com.zodiac.Game.SpacePlane;
 import com.zodiac.Game.SurfacePlane;
-import com.zodiac.Settings;
-import com.zodiac.SoundManager;
+import com.zodiac.Support.Settings;
+import com.zodiac.Support.SoundManager;
 import com.zodiac.SpaceAssault;
 
 /**
@@ -30,7 +28,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
 
     public GameScreen(SpaceAssault game)
     {
-        SoundManager.PlayMusic(Assets.Game_Music);
+        //SoundManager.PlayMusic(Assets.Game_Music);
         this.game=game;
         init();
     }
@@ -69,13 +67,14 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
         {
             renderer.begin(ShapeRenderer.ShapeType.Line);
             renderer.setColor(Color.GREEN);
-            renderer.rect(startDragX,startDragY,endDragX-startDragX,endDragY-startDragY);
+            renderer.rect(startDragX,Gdx.graphics.getHeight()-startDragY,endDragX-startDragX,Gdx.graphics.getHeight()-endDragY-(Gdx.graphics.getHeight()-startDragY));
             renderer.end();
         }
     }
 
     public void planeSwitch()
     {
+        SoundManager.StopAllSounds();
         surface.planeSwitch();
         space.planeSwitch();
         if(activePlane==space)
@@ -108,7 +107,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         activePlane.clicked(screenX,screenY,button);
         startDragX = screenX;
-        startDragY = Gdx.graphics.getHeight()-screenY;
+        startDragY = screenY;
         endDragX = startDragX;
         endDragY = startDragY;
 
@@ -121,7 +120,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
         if(dragging)
         {
             dragging = false;
-            activePlane.boxSelect(startDragX,startDragY,endDragX-startDragX,endDragY-startDragY);
+            activePlane.boxSelect(startDragX,startDragY,screenX,screenY);
         }
 
         return false;
@@ -133,7 +132,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
         if(Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
             dragging = true;
             endDragX = screenX;
-            endDragY = Gdx.graphics.getHeight() - screenY;
+            endDragY = screenY;
         }
 
         return true;

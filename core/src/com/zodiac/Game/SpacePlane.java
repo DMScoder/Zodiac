@@ -6,10 +6,10 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.*;
-import com.zodiac.Assets;
-import com.zodiac.Settings;
+import com.zodiac.Support.Assets;
+import com.zodiac.Support.Settings;
 import com.zodiac.entity.Unit;
-import com.zodiac.entity.UnitTypes;
+import com.zodiac.Support.Constant_Names;
 
 import java.util.ArrayList;
 
@@ -35,7 +35,10 @@ public class SpacePlane implements Plane{
     SurfacePlane surface;
     static OrthographicCamera camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     static boolean ACTIVE = true;
+    final static float UNIT_SPACING = 100;
 
+    final static float MAX_ZOOM = 500;
+    final static float MIN_ZOOM = 2;
     public static ArrayList[] Entities = new ArrayList[4];
     ArrayList<Unit> selected = new ArrayList<Unit>();
 
@@ -51,11 +54,27 @@ public class SpacePlane implements Plane{
         //Entities[2] = InTransit;
         //Entities[3] = Wreckage;
 
-        SpaceRender.setPlanet(Assets.Planet_Background,0,0,0,5);
-        Entities[SHIPS].add(new Unit(10,10, UnitTypes.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,10, UnitTypes.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,150, UnitTypes.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,150, UnitTypes.FEDERATION_SCOUT));
+        SpaceRender.setPlanet(Assets.Planet_Background,0,0,0,10);
+        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
+        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
     }
 
     @Override
@@ -63,6 +82,8 @@ public class SpacePlane implements Plane{
         GL20 gl = Gdx.gl;
         gl.glClearColor(0f,.05f,.1f,1);
         gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        manageSounds();
 
         camera.update();
         batch.setProjectionMatrix(camera.combined);
@@ -79,6 +100,34 @@ public class SpacePlane implements Plane{
             cameraMovement();
         for(int i=0;i<Entities[SHIPS].size();i++)
             ((Unit)Entities[SHIPS].get(i)).update();
+    }
+
+    private void manageSounds()
+    {
+        /*if(camera.zoom>300)
+        {
+            SoundManager.StopAllSounds();
+            return;
+        }
+        int shipCount=0;
+        for(int i=0;i<Entities[SHIPS].size();i++)
+        {
+            Unit unit = (Unit)Entities[SHIPS].get(i);
+            if(camera.frustum.pointInFrustum(unit.getPolygon().getX(),unit.getPolygon().getY(),0))
+            {
+                shipCount++;
+                if(SoundManager.getInstances(Constant_Names.FIGHTER_SOUND)<5)
+                {
+                    SoundManager.PlaySound(Constant_Names.FIGHTER_SOUND,true);
+                }
+            }
+        }
+        if(shipCount<4)
+        {
+            SoundManager.StopSound(Constant_Names.FIGHTER_SOUND,5-shipCount);
+        }
+
+        SoundManager.setGlobalVolume(1-(camera.zoom/500f*10));*/
     }
 
     @Override
@@ -133,10 +182,11 @@ public class SpacePlane implements Plane{
 
             if (unit.getPolygon().contains(vector2)) {
 
+                int k = 0;
                 for(int j=0;j<selected.size();j++)
                 {
-                    Unit unit2 = selected.get(j);
-                    unit2.setTarget(unit);
+                        Unit unit2 = selected.get(j);
+                        unit2.setTarget(unit);
                 }
 
                 targeted = true;
@@ -146,10 +196,18 @@ public class SpacePlane implements Plane{
 
         if(!targeted)
         {
-            for(int i = 0; i < selected.size();i++)
+            int l = 0;
+            for(int j=0;l<selected.size();j++)
             {
-                Unit unit = selected.get(i);
-                unit.move(vector2);
+                for(int k=0;l<selected.size()&&k<=j;k++)
+                {
+                    Vector2 tempVector = new Vector2(vector2.x,vector2.y);
+                    tempVector.x += UNIT_SPACING * j;
+                    tempVector.y += UNIT_SPACING * k;
+                    Unit unit2 = selected.get(l);
+                    unit2.move(tempVector);
+                    l++;
+                }
             }
         }
     }
@@ -184,21 +242,45 @@ public class SpacePlane implements Plane{
     private void cameraMovement()
     {
         float cameraSpeed = 5;
+
         if(Gdx.input.isKeyPressed(Settings.TOGGLE_CAMERA_SPEED))
             cameraSpeed = 10;
 
         if(Gdx.input.isKeyPressed(Settings.PAN_DOWN))
+        {
             camera.translate(0,-cameraSpeed*camera.zoom);
+            SpaceRender.OffsetY-=cameraSpeed*camera.zoom;
+        }
+
         if(Gdx.input.isKeyPressed(Settings.PAN_UP))
+        {
             camera.translate(0,cameraSpeed*camera.zoom);
+            SpaceRender.OffsetY+=cameraSpeed*camera.zoom;
+        }
+
         if(Gdx.input.isKeyPressed(Settings.PAN_RIGHT))
+        {
             camera.translate(cameraSpeed*camera.zoom,0);
+            SpaceRender.OffsetX+=cameraSpeed*camera.zoom;
+        }
+
         if(Gdx.input.isKeyPressed(Settings.PAN_LEFT))
+        {
             camera.translate(-cameraSpeed*camera.zoom,0);
+            SpaceRender.OffsetX-=cameraSpeed*camera.zoom;
+        }
         if(Gdx.input.isKeyPressed(Input.Keys.Q))
+        {
             camera.zoom *= 1.05;
+        }
         if(Gdx.input.isKeyPressed(Input.Keys.E))
+        {
             camera.zoom *= 0.95;
+        }
+        if(camera.zoom<2)
+            camera.zoom=2;
+        if(camera.zoom>500)
+            camera.zoom=500;
     }
 
     @Override

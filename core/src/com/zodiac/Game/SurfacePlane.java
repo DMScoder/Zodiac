@@ -9,10 +9,9 @@ import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
-import com.zodiac.Settings;
-import com.zodiac.entity.GameObject;
+import com.zodiac.Support.Settings;
 import com.zodiac.entity.Unit;
-import com.zodiac.entity.UnitTypes;
+import com.zodiac.Support.Constant_Names;
 
 import java.util.ArrayList;
 
@@ -40,7 +39,7 @@ public class SurfacePlane implements Plane{
         //Entities[2] = Flying_Units;
         //Entities[3] = Decals;
 
-        Entities[GROUND_UNITS].add(new Unit(0,0, UnitTypes.FEDERATION_MAIN_TANK));
+        Entities[GROUND_UNITS].add(new Unit(0,0, Constant_Names.FEDERATION_MAIN_TANK));
     }
 
     @Override
