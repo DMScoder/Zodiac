@@ -5,10 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Intersector;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.math.*;
 import com.zodiac.Support.Settings;
 import com.zodiac.entity.Unit;
 import com.zodiac.Support.Constant_Names;
@@ -82,14 +79,21 @@ public class SurfacePlane implements Plane{
         Vector3 start = new Vector3(startX,startY,0);
         Vector3 end = new Vector3(endX,endY,0);
 
-        Rectangle rectangle = new Rectangle(start.x,start.y,end.x-start.x,end.y-start.y);
+        camera.unproject(start);
+        camera.unproject(end);
+
+        Polygon rPoly = new Polygon(new float[] { 0, 0, end.x-start.x, 0, end.x-start.x,
+                end.y-start.y, 0, end.y-start.y });
+
+        rPoly.setPosition(start.x, start.y);
 
         if(!Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT))
             selected.clear();
 
-        for (int i = 0; i < Entities[GROUND_UNITS].size(); i++) {
-            Unit unit = (Unit) Entities[GROUND_UNITS].get(i);
-            if(Intersector.overlaps(rectangle,unit.getPolygon().getBoundingRectangle()))
+        for(int i=0;i<Entities[GROUND_UNITS].size();i++) {
+            Unit unit = ((Unit) Entities[GROUND_UNITS].get(i));
+
+            if(Intersector.overlapConvexPolygons(unit.getPolygon(),rPoly))
             {
                 selected.add(unit);
             }

@@ -56,25 +56,6 @@ public class SpacePlane implements Plane{
 
         SpaceRender.setPlanet(Assets.Planet_Background,0,0,0,10);
         Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,10, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(10,150, Constant_Names.FEDERATION_SCOUT));
-        Entities[SHIPS].add(new Unit(150,150, Constant_Names.FEDERATION_SCOUT));
     }
 
     @Override

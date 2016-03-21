@@ -28,6 +28,11 @@ public class GameObject {
                 texture.getWidth(),texture.getHeight(),false,false);
     }
 
+    public void setOrigin(float x, float y)
+    {
+        polygon.setOrigin(x,y);
+    }
+
     public Polygon getPolygon() {
         return polygon;
     }

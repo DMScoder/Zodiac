@@ -11,18 +11,27 @@ import com.zodiac.Support.Utilities;
  */
 public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
+    //
     private float hull;
     private float shields;
     private float armor;
     private Unit target;
-    private Vector2 moveCoordinates = null;
+
+    //List of all attached turrets
     private Turret[] turrets;
+
+    //Movement variables
+    private Vector2 moveCoordinates = null;
     private float speed = 0;
     private float maxSpeed = 10;
     private float maxAcceleration = .5f;
     private float acceleration = 0;
     private float delta_acceleration = 0.001f;
     private float turnRate = 2f;
+    private int size = 1;
+    private boolean turnInPlace = false;
+
+
     private int type;
 
     public Unit(float x, float y, int type)
