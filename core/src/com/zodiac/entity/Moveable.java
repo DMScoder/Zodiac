@@ -7,6 +7,6 @@ import com.badlogic.gdx.math.Vector2;
  */
 public interface Moveable {
 
-    void move(Vector2 vector2);
+    void setMove(Vector2 vector2);
     Vector2 getMove();
 }

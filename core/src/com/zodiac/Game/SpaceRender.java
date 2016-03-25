@@ -1,8 +1,10 @@
 package com.zodiac.Game;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.zodiac.Grid.MainGrid;
 import com.zodiac.entity.Unit;
 
 import java.util.ArrayList;
@@ -40,7 +42,8 @@ public class SpaceRender {
 
     public static void drawBackground(Batch batch)
     {
-        batch.draw(planetTexture,planetX+OffsetX*.8f,planetY+OffsetY*.8f,planetTexture.getWidth()/2,planetTexture.getHeight()/2,planetTexture.getWidth(),
+        batch.draw(planetTexture,planetX+OffsetX*.8f,planetY+OffsetY*.8f,planetTexture.getWidth()/2,
+                planetTexture.getHeight()/2,planetTexture.getWidth(),
                 planetTexture.getHeight(),planetScale,planetScale,0,0,0,
                 planetTexture.getWidth(),planetTexture.getHeight(),false,false);
     }
@@ -48,6 +51,28 @@ public class SpaceRender {
     public static void drawTransit(Batch batch)
     {
 
+    }
+
+    public static void drawGrid(MainGrid mainGrid)
+    {
+        shapeRenderer.setProjectionMatrix(SpacePlane.camera.combined);
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
+        shapeRenderer.setColor(Color.GREEN);
+        for(int i=0;i<mainGrid.subgrid.length;i++)
+            for(int j=0;j<mainGrid.subgrid[i].length;j++)
+            {
+                shapeRenderer.setColor(Color.BLUE);
+                for(int k=0;k<10;k++)
+                    for(int l=0;l<10;l++)
+                        shapeRenderer.rect((i-mainGrid.subgrid.length/2)*mainGrid.cellSize*10+mainGrid.cellSize*k,
+                                (j-mainGrid.subgrid[i].length/2)*mainGrid.cellSize*10+mainGrid.cellSize*l,
+                                mainGrid.cellSize,mainGrid.cellSize);
+                shapeRenderer.setColor(Color.GREEN);
+                shapeRenderer.rect((i-mainGrid.subgrid.length/2)*mainGrid.cellSize*10,
+                        (j-mainGrid.subgrid[i].length/2)*mainGrid.cellSize*10,
+                        mainGrid.cellSize*10,mainGrid.cellSize*10);
+            }
+        shapeRenderer.end();
     }
 
     public static void drawUnits(Batch batch)

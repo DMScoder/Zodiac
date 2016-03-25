@@ -11,4 +11,6 @@ public class Turret extends GameObject{
         super(x, y, Assets.getTurretType(type));
     }
 
+    public void update() {
+    }
 }

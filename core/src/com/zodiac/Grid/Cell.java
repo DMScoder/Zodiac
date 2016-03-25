@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class Cell {
 
-    ArrayList <GameObject> objects = new ArrayList<GameObject>(1);
+    //ArrayList <GameObject> objects = new ArrayList<GameObject>(1);
 
     //Completely normal pathfinding
     public static final int NORMAL = 0;

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.zodiac.Game.Plane;
 import com.zodiac.Game.SpacePlane;
 import com.zodiac.Game.SurfacePlane;
+import com.zodiac.Support.Assets;
 import com.zodiac.Support.Settings;
 import com.zodiac.Support.SoundManager;
 import com.zodiac.SpaceAssault;
@@ -28,7 +29,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
 
     public GameScreen(SpaceAssault game)
     {
-        //SoundManager.PlayMusic(Assets.Game_Music);
+        SoundManager.PlayMusic(Assets.Game_Music);
         this.game=game;
         init();
     }

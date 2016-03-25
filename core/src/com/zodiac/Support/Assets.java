@@ -29,6 +29,7 @@ public class Assets {
 
     public static void Load()
     {
+        //IO.open();
         Ships = new Texture[SHIP_COUNT];
         Turrets = new Texture[TURRET_COUNT];
         SoundEffects = new Sound[SOUND_COUNT];

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.*;
+import com.zodiac.Grid.MainGrid;
 import com.zodiac.Support.Assets;
 import com.zodiac.Support.Settings;
 import com.zodiac.entity.Unit;
@@ -42,6 +43,8 @@ public class SpacePlane implements Plane{
     public static ArrayList[] Entities = new ArrayList[4];
     ArrayList<Unit> selected = new ArrayList<Unit>();
 
+    MainGrid mainGrid;
+
     final static int SHIPS = 0;
     final static int PROJECTILES = 1;
     final static int IN_TRANSIT = 2;
@@ -49,13 +52,15 @@ public class SpacePlane implements Plane{
 
     public SpacePlane()
     {
+        mainGrid = new MainGrid(50,50,500);
         Entities[0] = new ArrayList<Unit>();
         //Entities[1] = Projectiles;
         //Entities[2] = InTransit;
         //Entities[3] = Wreckage;
 
         SpaceRender.setPlanet(Assets.Planet_Background,0,0,0,10);
-        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
+        for(int i=0;i<100;i++)
+            Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
     }
 
     @Override
@@ -73,6 +78,7 @@ public class SpacePlane implements Plane{
         SpaceRender.draw(batch);
         batch.end();
         SpaceRender.drawSelection(selected);
+        SpaceRender.drawGrid(mainGrid);
     }
 
     @Override
@@ -163,7 +169,6 @@ public class SpacePlane implements Plane{
 
             if (unit.getPolygon().contains(vector2)) {
 
-                int k = 0;
                 for(int j=0;j<selected.size();j++)
                 {
                         Unit unit2 = selected.get(j);
@@ -178,15 +183,31 @@ public class SpacePlane implements Plane{
         if(!targeted)
         {
             int l = 0;
+
+            int square = (int)Math.sqrt(selected.size())/2;
+
             for(int j=0;l<selected.size();j++)
             {
-                for(int k=0;l<selected.size()&&k<=j;k++)
+                int k;
+                for(k=0;l<selected.size()&&k<=j;k++)
                 {
                     Vector2 tempVector = new Vector2(vector2.x,vector2.y);
-                    tempVector.x += UNIT_SPACING * j;
-                    tempVector.y += UNIT_SPACING * k;
+                    tempVector.x += UNIT_SPACING * (j-square);
+                    tempVector.y += UNIT_SPACING * (k-square);
                     Unit unit2 = selected.get(l);
-                    unit2.move(tempVector);
+                    unit2.setMove(tempVector);
+                    l++;
+                }
+
+                int tempK = k;
+
+                for(k = j; l<selected.size() && k >=0; k--)
+                {
+                    Vector2 tempVector = new Vector2(vector2.x,vector2.y);
+                    tempVector.x += UNIT_SPACING * (k-square);
+                    tempVector.y += UNIT_SPACING * (tempK-square);
+                    Unit unit2 = selected.get(l);
+                    unit2.setMove(tempVector);
                     l++;
                 }
             }

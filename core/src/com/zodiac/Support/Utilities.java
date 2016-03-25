@@ -37,4 +37,11 @@ public class Utilities {
     {
         return (float)(Math.sqrt(Math.pow(one.getPolygon().getX()- two.getPolygon().getX(),2)+Math.pow(one.getPolygon().getY()- two.getPolygon().getY(),2)));
     }
+
+    public static float convertToPositiveAngle(float degrees)
+    {
+        if(degrees<0)
+            return degrees+360;
+        return degrees;
+    }
 }

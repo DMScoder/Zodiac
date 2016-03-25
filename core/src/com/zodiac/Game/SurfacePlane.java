@@ -129,7 +129,7 @@ public class SurfacePlane implements Plane{
             for(int i = 0; i < selected.size();i++)
             {
                 Unit unit = selected.get(i);
-                unit.move(vector2);
+                unit.setMove(vector2);
             }
         }
     }

@@ -1,5 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactManager">
+    <artifact type="jar" name="Zodiac:jar">
+      <output-path>$USER_HOME$/Desktop</output-path>
+      <root id="archive" name="Zodiac.jar">
+        <element id="module-output" name="core" />
+        <element id="module-output" name="desktop" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/lwjgl_util-2.9.2.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/jinput-platform-2.0.5-natives-windows.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/lwjgl-platform-2.9.2-natives-osx.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/jinput-platform-2.0.5-natives-linux.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/json-simple-1.1.1.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/jorbis-0.0.17.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/lwjgl-platform-2.9.2-natives-windows.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/jlayer-1.0.1-gdx.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/gdx-box2d-platform-1.9.2-natives-desktop.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/jinput-2.0.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/gdx-platform-1.9.2-natives-desktop.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/jutils-1.0.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/lwjgl-platform-2.9.2-natives-linux.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/ant-1.9.4.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/ant-antlr-1.9.4.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/ant-junit-1.9.4.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/ant-launcher-1.9.4.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/bsf-2.4.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/commons-cli-1.2.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/commons-logging-1.2.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/gpars-1.2.1.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-ant-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-bsf-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-console-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-docgenerator-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-groovydoc-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-groovysh-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-jmx-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-json-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-jsr223-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-nio-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-servlet-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-sql-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-swing-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-templates-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-test-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-testng-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/groovy-xml-2.4.5.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/hamcrest-core-1.3.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/ivy-2.4.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/jansi-1.11.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/jcommander-1.47.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/jline-2.12.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/jsp-api-2.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/jsr166y-1.7.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/junit-4.12.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/multiverse-core-0.7.0.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/qdox-1.12.1.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/servlet-api-2.4.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/testng-6.8.13.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/xmlpull-1.1.3.1.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="D:/Other/Groovy/groovy-2.4.5/lib/xstream-1.4.7.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/gdx-backend-lwjgl-1.9.2.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/gdx-box2d-1.9.2.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/gdx-1.9.2.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/jinput-platform-2.0.5-natives-osx.jar" path-in-jar="/" />
+        <element id="extracted-dir" path="$USER_HOME$/Desktop/Test game/lib/lwjgl-2.9.2.jar" path-in-jar="/" />
+      </root>
+    </artifact>
+  </component>
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
     <resourceExtensions>
@@ -186,35 +253,5 @@
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-  </component>
-  <component name="libraryTable">
-    <library name="gdx-1.9.2">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.2/e641cb91bec06bc64d9ddf7a7d7062caceec73cd/gdx-1.9.2.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="gdx-backend-lwjgl-1.9.2">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.9.2/d710a8704ed584ec2ba9ca52e3a6a5885dd759cc/gdx-backend-lwjgl-1.9.2.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
-    <library name="gdx-backend-lwjgl-1.9.2-sources">
-      <CLASSES />
-      <JAVADOC />
-      <SOURCES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.9.2/888ddbf116b94ab6dbe07178e035091031425b67/gdx-backend-lwjgl-1.9.2-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="lwjgl-2.9.2">
-      <CLASSES>
-        <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl/2.9.2/a9d80fe5935c7a9149f6584d9777cfd471f65489/lwjgl-2.9.2.jar!/" />
-      </CLASSES>
-      <JAVADOC />
-      <SOURCES />
-    </library>
   </component>
 </project>
