@@ -20,6 +20,7 @@ public class Assets {
     public static Texture Menu_Background;
     public static Texture Federation_Scout;
     public static Texture Planet_Background;
+    public static Texture Space_Background;
     public static Texture[] Ships;
     public static Texture[] Turrets;
     public static Sound[] SoundEffects;
@@ -36,6 +37,7 @@ public class Assets {
         Menu_Background = new Texture(Gdx.files.internal("stars.jpg"));
         Test_Texture = new Texture(Gdx.files.internal("badlogic.jpg"));
         Planet_Background = new Texture(Gdx.files.internal("Planets/VolcanicPlanet1.png"));
+        Space_Background = new Texture(Gdx.files.internal("Planets/Background.png"));
 
         Ships[0] = new Texture(Gdx.files.internal("Ship/Federation_Scout.png"));
         Ships[1] = new Texture(Gdx.files.internal("Ship/Federation_MainBattle_Tank.png"));

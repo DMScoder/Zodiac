@@ -16,4 +16,6 @@ public interface Plane {
     void planeSwitch();
     void addPlane(Plane plane);
     OrthographicCamera getCamera();
+
+    void scrolled(float amount);
 }

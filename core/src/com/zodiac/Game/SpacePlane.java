@@ -73,12 +73,11 @@ public class SpacePlane implements Plane{
 
         camera.update();
         batch.setProjectionMatrix(camera.combined);
-
         batch.begin();
         SpaceRender.draw(batch);
         batch.end();
         SpaceRender.drawSelection(selected);
-        SpaceRender.drawGrid(mainGrid);
+        //SpaceRender.drawGrid(mainGrid);
     }
 
     @Override
@@ -301,5 +300,18 @@ public class SpacePlane implements Plane{
     @Override
     public OrthographicCamera getCamera() {
         return camera;
+    }
+
+    @Override
+    public void scrolled(float amount) {
+        if(amount<0)
+            amount = .9f;
+        else
+            amount = 1.1f;
+        camera.zoom*=amount;
+        if(camera.zoom<2)
+            camera.zoom=2;
+        if(camera.zoom>500)
+            camera.zoom=500;
     }
 }

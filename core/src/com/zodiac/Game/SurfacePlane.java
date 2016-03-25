@@ -198,4 +198,9 @@ public class SurfacePlane implements Plane{
     public OrthographicCamera getCamera() {
         return camera;
     }
+
+    @Override
+    public void scrolled(float amount) {
+
+    }
 }

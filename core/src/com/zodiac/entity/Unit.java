@@ -3,6 +3,7 @@ package com.zodiac.entity;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.sun.corba.se.impl.javax.rmi.CORBA.Util;
 import com.zodiac.Support.Assets;
 import com.zodiac.Support.Constant_Names;
 import com.zodiac.Support.IO;
@@ -24,15 +25,15 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
     //Movement variables
     private Vector2 moveCoordinates = null;
-    private float velocityX;
-    private float velocityY;
-    private float maxSpeed = 10;
-    private float maxAcceleration = .5f;
+    private float velocityX=0;
+    private float velocityY=0;
+    private float maxSpeed = 100;
+    private float maxAcceleration = 50f;
     private float acceleration = 0;
     private float accelerationX = 0;
     private float accelerationY = 0;
-    private float delta_acceleration = 0.002f;
-    private float turnRate = 4f;
+    private float delta_acceleration = 0.2f;
+    private float turnRate = 1f;
     private int size = 1;
     private boolean turnInPlace = false;
 
@@ -73,42 +74,48 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         if(moveCoordinates==null)
             return;
 
-        float targetAngle = MathUtils.atan2(moveCoordinates.x-getPolygon().getX(),moveCoordinates.y- getPolygon().getY());
+        float targetAngle = MathUtils.atan2(moveCoordinates.x-getPolygon().getX(),moveCoordinates.y-getPolygon().getY());
         targetAngle = MathUtils.radiansToDegrees*targetAngle;
-        Utilities.convertToPositiveAngle(targetAngle);
+        targetAngle = 360 - Utilities.convertToPositiveAngle(targetAngle);
 
         if(!turnInPlace||getPolygon().getRotation()==targetAngle)
         {
             this.getPolygon().setPosition(getPolygon().getX()+velocityX, getPolygon().getY()+velocityY);
-            velocityX += accelerationX;
-            velocityY += accelerationY;
+
+            if(maxSpeed>Math.abs(velocityX)+Math.abs(velocityY))
+            {
+                velocityX = MathUtils.cosDeg(getPolygon().getRotation()+90)*acceleration;
+                velocityY = MathUtils.sinDeg(getPolygon().getRotation()+90)*acceleration;
+                //velocityX += accelerationX;
+                //velocityY += accelerationY;
+            }
         }
 
-        float turnLeft = Math.abs(getPolygon().getRotation()+turnRate);
-        float turnRight = Math.abs(Utilities.convertToPositiveAngle(getPolygon().getRotation()-turnRate));
-
-        if(Math.abs(turnLeft-targetAngle)<turnRate||Math.abs(turnRight-targetAngle)<turnRate)
-            getPolygon().setRotation(targetAngle);
-
-        else
+        if(targetAngle != getPolygon().getRotation())
         {
-            if(Math.abs(targetAngle-turnRight)> Math.abs(targetAngle-turnLeft))
-                getPolygon().setRotation(turnLeft);
+
+            float turnLeft = getPolygon().getRotation()+turnRate;
+            float turnRight = Math.abs(Utilities.convertToPositiveAngle(getPolygon().getRotation()-turnRate));
+
+            if(Math.abs(turnLeft-targetAngle)<turnRate||Math.abs(turnRight-targetAngle)<turnRate)
+                getPolygon().setRotation(targetAngle);
+
             else
-                getPolygon().setRotation(turnRight);
+            {
+                if((Math.abs(targetAngle-turnRight)> Math.abs(targetAngle-turnLeft)
+                        &&Math.abs(targetAngle-turnRight-360)> Math.abs(targetAngle-turnLeft)))
+
+                    getPolygon().setRotation(turnLeft);
+                else
+                    getPolygon().setRotation(turnRight);
+            }
         }
 
-        accelerationX = acceleration * MathUtils.cosDeg(getPolygon().getRotation());
-        accelerationY = acceleration * MathUtils.sinDeg(getPolygon().getRotation());
+        accelerationX = acceleration * MathUtils.cosDeg(getPolygon().getRotation()-90);
+        accelerationY = acceleration * MathUtils.sinDeg(getPolygon().getRotation()-90);
 
         if(acceleration<maxAcceleration)
             acceleration+=delta_acceleration;
-
-        if(maxSpeed<velocityX+velocityY)
-        {
-            delta_acceleration = 0;
-            acceleration = 0;
-        }
 
         if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)<100)
         {

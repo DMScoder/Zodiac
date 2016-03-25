@@ -41,7 +41,7 @@ public class Utilities {
     public static float convertToPositiveAngle(float degrees)
     {
         if(degrees<0)
-            return degrees+360;
+            return 360+degrees;
         return degrees;
     }
 }

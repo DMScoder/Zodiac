@@ -29,7 +29,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
 
     public GameScreen(SpaceAssault game)
     {
-        SoundManager.PlayMusic(Assets.Game_Music);
+        //SoundManager.PlayMusic(Assets.Game_Music);
         this.game=game;
         init();
     }
@@ -145,7 +145,9 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
     }
 
     @Override
-    public boolean scrolled(int amount) {
+    public boolean scrolled(int amount)
+    {
+        activePlane.scrolled(amount);
         return false;
     }
 }

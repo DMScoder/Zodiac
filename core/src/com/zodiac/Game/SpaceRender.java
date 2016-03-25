@@ -1,10 +1,14 @@
 package com.zodiac.Game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g3d.particles.ResourceData;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.zodiac.Grid.MainGrid;
+import com.zodiac.Support.Assets;
 import com.zodiac.entity.Unit;
 
 import java.util.ArrayList;
@@ -42,6 +46,7 @@ public class SpaceRender {
 
     public static void drawBackground(Batch batch)
     {
+        batch.draw(Assets.Space_Background,0+OffsetX-Gdx.graphics.getWidth()*SpacePlane.camera.zoom/2,0+OffsetY-Gdx.graphics.getHeight()*SpacePlane.camera.zoom/2,Gdx.graphics.getWidth()*SpacePlane.camera.zoom,Gdx.graphics.getHeight()*SpacePlane.camera.zoom);
         batch.draw(planetTexture,planetX+OffsetX*.8f,planetY+OffsetY*.8f,planetTexture.getWidth()/2,
                 planetTexture.getHeight()/2,planetTexture.getWidth(),
                 planetTexture.getHeight(),planetScale,planetScale,0,0,0,
