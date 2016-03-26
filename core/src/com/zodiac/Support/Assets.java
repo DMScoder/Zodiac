@@ -21,6 +21,7 @@ public class Assets {
     public static Texture Federation_Scout;
     public static Texture Planet_Background;
     public static Texture Space_Background;
+    public static Texture Wreckage;
     public static Texture[] Ships;
     public static Texture[] Turrets;
     public static Sound[] SoundEffects;
@@ -38,11 +39,14 @@ public class Assets {
         Test_Texture = new Texture(Gdx.files.internal("badlogic.jpg"));
         Planet_Background = new Texture(Gdx.files.internal("Planets/VolcanicPlanet1.png"));
         Space_Background = new Texture(Gdx.files.internal("Planets/Background.png"));
+        Wreckage = new Texture(Gdx.files.internal("Props/Wreckage1.png"));
 
-        Ships[0] = new Texture(Gdx.files.internal("Ship/Federation_Scout.png"));
-        Ships[1] = new Texture(Gdx.files.internal("Ship/Federation_MainBattle_Tank.png"));
+        Ships[Constant_Names.FEDERATION_SCOUT] = new Texture(Gdx.files.internal("Ship/Federation_Scout.png"));
+        Ships[Constant_Names.FEDERATION_MAIN_TANK] = new Texture(Gdx.files.internal("Ship/Federation_MainBattle_Tank.png"));
+        Ships[Constant_Names.FEDERATION_GUNBOAT] = new Texture(Gdx.files.internal("Ship/Federation_Gunboat.png"));
 
-        Turrets[0] = new Texture(Gdx.files.internal("Ship/Federation_MainBattle_TankTurret.png"));
+        Turrets[Constant_Names.FEDERATION_MAIN_TANK_TURRET] = new Texture(Gdx.files.internal("Ship/Federation_MainBattle_TankTurret.png"));
+        Turrets[Constant_Names.FEDERATION_500MM] = new Texture(Gdx.files.internal("Ship/Federation_500mm_Turret.png"));
 
         SoundEffects[0] = Gdx.audio.newSound(Gdx.files.internal("Sound/Effects/FighterCraft.wav"));
     }

@@ -54,13 +54,15 @@ public class SpacePlane implements Plane{
     {
         mainGrid = new MainGrid(50,50,500);
         Entities[0] = new ArrayList<Unit>();
-        //Entities[1] = Projectiles;
+        //Entities[1] = new ArrayList()
         //Entities[2] = InTransit;
         //Entities[3] = Wreckage;
 
         SpaceRender.setPlanet(Assets.Planet_Background,0,0,0,10);
         for(int i=0;i<100;i++)
             Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
+        for(int i=0;i<100;i++)
+            Entities[SHIPS].add(new Unit(100,100, Constant_Names.FEDERATION_GUNBOAT));
     }
 
     @Override
@@ -190,10 +192,10 @@ public class SpacePlane implements Plane{
                 int k;
                 for(k=0;l<selected.size()&&k<=j;k++)
                 {
-                    Vector2 tempVector = new Vector2(vector2.x,vector2.y);
-                    tempVector.x += UNIT_SPACING * (j-square);
-                    tempVector.y += UNIT_SPACING * (k-square);
                     Unit unit2 = selected.get(l);
+                    Vector2 tempVector = new Vector2(vector2.x,vector2.y);
+                    tempVector.x += unit2.getSize() * UNIT_SPACING * (j-square);
+                    tempVector.y += unit2.getSize() * UNIT_SPACING * (k-square);
                     unit2.setMove(tempVector);
                     l++;
                 }
@@ -202,10 +204,10 @@ public class SpacePlane implements Plane{
 
                 for(k = j; l<selected.size() && k >=0; k--)
                 {
-                    Vector2 tempVector = new Vector2(vector2.x,vector2.y);
-                    tempVector.x += UNIT_SPACING * (k-square);
-                    tempVector.y += UNIT_SPACING * (tempK-square);
                     Unit unit2 = selected.get(l);
+                    Vector2 tempVector = new Vector2(vector2.x,vector2.y);
+                    tempVector.x += unit2.getSize()* UNIT_SPACING * (k-square);
+                    tempVector.y += unit2.getSize()* UNIT_SPACING * (tempK-square);
                     unit2.setMove(tempVector);
                     l++;
                 }

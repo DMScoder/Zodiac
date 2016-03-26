@@ -12,7 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.zodiac.Support.Assets;
 import com.zodiac.Support.SoundManager;
-import com.zodiac.SpaceAssault;
+import com.zodiac.Zodiac;
 
 /**
  * Created by SYSTEM on 3/10/2016.
@@ -21,7 +21,7 @@ public class MenuScreen extends ScreenAdapter {
 
     Stage stage;
     OrthographicCamera camera;
-    SpaceAssault game;
+    Zodiac game;
 
     static final int GAME = 1;
     static final int LOAD = 2;
@@ -65,7 +65,7 @@ public class MenuScreen extends ScreenAdapter {
         }
     }
 
-    public MenuScreen(SpaceAssault game)
+    public MenuScreen(Zodiac game)
     {
         this.game = game;
 

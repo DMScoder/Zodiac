@@ -55,7 +55,10 @@ public class SpaceRender {
 
     public static void drawTransit(Batch batch)
     {
-
+        batch.draw(Assets.Wreckage,1000+OffsetX*.5f,1000+OffsetY*.4f);
+        batch.draw(Assets.Wreckage,2000+OffsetX*.5f,3000+OffsetY*.4f);
+        batch.draw(Assets.Wreckage,-1000+OffsetX*.5f,1500+OffsetY*.4f);
+        batch.draw(Assets.Wreckage,500+OffsetX*.5f,2500+OffsetY*.4f);
     }
 
     public static void drawGrid(MainGrid mainGrid)

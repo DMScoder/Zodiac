@@ -2,7 +2,7 @@ package com.zodiac.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import com.zodiac.SpaceAssault;
+import com.zodiac.Zodiac;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
@@ -14,6 +14,6 @@ public class DesktopLauncher {
 
 		//Change icon in future release
 		//config.addIcon("badlogic.jpg",Files.FileType.Internal);
-		new LwjglApplication(new SpaceAssault(), config);
+		new LwjglApplication(new Zodiac(), config);
 	}
 }

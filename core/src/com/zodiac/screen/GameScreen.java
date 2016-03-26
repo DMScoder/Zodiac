@@ -9,7 +9,7 @@ import com.zodiac.Game.SurfacePlane;
 import com.zodiac.Support.Assets;
 import com.zodiac.Support.Settings;
 import com.zodiac.Support.SoundManager;
-import com.zodiac.SpaceAssault;
+import com.zodiac.Zodiac;
 
 /**
  * Created by SYSTEM on 3/10/2016.
@@ -17,7 +17,7 @@ import com.zodiac.SpaceAssault;
 public class GameScreen extends ScreenAdapter implements InputProcessor {
 
     ShapeRenderer renderer = new ShapeRenderer();
-    SpaceAssault game;
+    Zodiac game;
     SurfacePlane surface;
     SpacePlane space;
     Plane activePlane;
@@ -27,7 +27,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
     int endDragX;
     int endDragY;
 
-    public GameScreen(SpaceAssault game)
+    public GameScreen(Zodiac game)
     {
         //SoundManager.PlayMusic(Assets.Game_Music);
         this.game=game;
