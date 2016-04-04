@@ -7,30 +7,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97e8575b-ec16-470c-9c71-fa07d8668845" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/assets/Props/Wreckage1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/assets/Ship/Federation_500mm_Turret.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/assets/Ship/Federation_Gunboat.png" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/SpaceAssault.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/com/zodiac/SpaceAssault.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/Zodiac.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/Game/Plane.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/Game/Plane.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/Game/Player.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/Game/Player.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/Game/SpacePlane.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/Game/SpacePlane.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/Game/SurfacePlane.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/Game/SurfacePlane.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/GameObject.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/GameObject.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/Projectile.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/Projectile.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/StarShip.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/StarShip.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/Turret.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/Turret.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/Unit.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/Unit.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/GameScreen.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/GameScreen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/MenuScreen.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/MenuScreen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/desktop/com/zodiac/desktop/DesktopLauncher.class" afterPath="$PROJECT_DIR$/out/production/desktop/com/zodiac/desktop/DesktopLauncher.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/Wreckage.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/entity/Wreckage.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/GameMenuScreen.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/GameMenuScreen.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/LoadScreen.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/LoadScreen.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/MenuScreen$MenuButton$1.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/MenuScreen$MenuButton$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/MenuScreen$MenuButton.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/MenuScreen$MenuButton.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/SettingsScreen.class" afterPath="$PROJECT_DIR$/out/production/core/com/zodiac/screen/SettingsScreen.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Zodiac.iws" afterPath="$PROJECT_DIR$/Zodiac.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/core.iml" afterPath="$PROJECT_DIR$/core/core.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/Game/SpacePlane.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/Game/SpacePlane.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/Game/SpaceRender.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/Game/SpaceRender.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/Support/Assets.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/Support/Assets.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/Support/Constant_Names.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/Support/Constant_Names.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/Support/IO.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/Support/IO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/Support/Utilities.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/Support/Utilities.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/Zodiac.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/Zodiac.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/entity/Turret.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/entity/Turret.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/entity/Unit.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/entity/Unit.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/screen/GameScreen.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/screen/GameScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/com/zodiac/screen/MenuScreen.java" afterPath="$PROJECT_DIR$/core/src/com/zodiac/screen/MenuScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/desktop/src/com/zodiac/desktop/DesktopLauncher.java" afterPath="$PROJECT_DIR$/desktop/src/com/zodiac/desktop/DesktopLauncher.java" />
     </list>
     <ignored path="Zodiac.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -88,17 +85,57 @@
     <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+            <file leaf-file-name="SpacePlane.java" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Game/SpacePlane.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.0">
+                    <caret line="61" column="77" selection-start-line="61" selection-start-column="77" selection-end-line="61" selection-end-column="77" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="SpaceRender.java" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Game/SpaceRender.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="0.0">
+                    <caret line="60" column="49" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="Zodiac" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Unit.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Unit.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/entity/Unit.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.42592594">
+              <caret line="158" column="23" selection-start-line="158" selection-start-column="23" selection-end-line="158" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utilities.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Support/Utilities.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="56" column="76" selection-start-line="56" selection-start-column="76" selection-end-line="56" selection-end-column="76" />
+              <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -108,9 +145,24 @@
         <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/entity/Turret.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <caret line="33" column="78" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#610#611#0" expanded="true" />
+                <element signature="e#680#681#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameObject.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/entity/GameObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
+              <folding>
+                <element signature="e#1029#1030#0" expanded="true" />
+                <element signature="e#1067#1068#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,17 +173,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1223#1224#0" expanded="false" />
-                <element signature="e#1267#1268#0" expanded="false" />
-                <element signature="e#2338#2339#0" expanded="false" />
-                <element signature="e#2366#2367#0" expanded="false" />
-                <element signature="e#2427#2428#0" expanded="false" />
-                <element signature="e#2455#2456#0" expanded="false" />
-                <element signature="e#3381#3382#0" expanded="false" />
-                <element signature="e#3408#3409#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -140,14 +182,8 @@
         <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Support/Assets.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="74" selection-start-line="41" selection-start-column="74" selection-end-line="41" selection-end-column="74" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2422#2423#0" expanded="false" />
-                <element signature="e#2456#2457#0" expanded="false" />
-                <element signature="e#2508#2509#0" expanded="false" />
-                <element signature="e#2544#2545#0" expanded="false" />
-              </folding>
+              <caret line="39" column="74" selection-start-line="39" selection-start-column="74" selection-end-line="39" selection-end-column="74" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -167,9 +203,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -177,28 +211,18 @@
       <file leaf-file-name="UnitStats.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/assets/Ship/UnitStats.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="1" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Zodiac.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Zodiac.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Zodiac.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30737135">
-              <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DesktopLauncher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/desktop/src/com/zodiac/desktop/DesktopLauncher.java">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+              <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -254,19 +278,19 @@
         <option value="$PROJECT_DIR$/core/src/com/zodiac/Grid/SubGrid.java" />
         <option value="$PROJECT_DIR$/core/src/com/zodiac/Grid/MainGrid.java" />
         <option value="$PROJECT_DIR$/core/src/com/zodiac/Grid/Cell.java" />
-        <option value="$PROJECT_DIR$/core/src/com/zodiac/Support/Utilities.java" />
         <option value="$PROJECT_DIR$/core/src/com/zodiac/Game/Plane.java" />
         <option value="$PROJECT_DIR$/core/src/com/zodiac/Game/SurfacePlane.java" />
         <option value="$PROJECT_DIR$/core/src/com/zodiac/Support/Constant_Names.java" />
-        <option value="$PROJECT_DIR$/core/src/com/zodiac/Game/SpacePlane.java" />
-        <option value="$PROJECT_DIR$/core/src/com/zodiac/Support/Assets.java" />
         <option value="$PROJECT_DIR$/core/src/com/zodiac/Game/SpaceRender.java" />
         <option value="$PROJECT_DIR$/core/src/com/zodiac/screen/GameScreen.java" />
-        <option value="$PROJECT_DIR$/core/src/com/zodiac/entity/Unit.java" />
-        <option value="$PROJECT_DIR$/core/src/com/zodiac/entity/Turret.java" />
         <option value="$PROJECT_DIR$/core/assets/Ship/UnitStats.txt" />
         <option value="$PROJECT_DIR$/core/src/com/zodiac/Support/IO.java" />
         <option value="$PROJECT_DIR$/core/src/com/zodiac/Zodiac.java" />
+        <option value="$PROJECT_DIR$/core/src/com/zodiac/Support/Assets.java" />
+        <option value="$PROJECT_DIR$/core/src/com/zodiac/Support/Utilities.java" />
+        <option value="$PROJECT_DIR$/core/src/com/zodiac/Game/SpacePlane.java" />
+        <option value="$PROJECT_DIR$/core/src/com/zodiac/entity/Turret.java" />
+        <option value="$PROJECT_DIR$/core/src/com/zodiac/entity/Unit.java" />
       </list>
     </option>
   </component>
@@ -282,7 +306,7 @@
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1928" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
@@ -320,9 +344,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -607,6 +629,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -949,35 +973,41 @@
       <option name="project" value="LOCAL" />
       <updated>1458923539236</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="JSON added and works. Ships have trouble turning left.">
+      <created>1459025321098</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1459025321098</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266385" sideWeight="0.5265625" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.4734375" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18181819" sideWeight="0.55673224" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1140625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17760417" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266385" sideWeight="0.5265625" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18287526" sideWeight="0.55673224" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32875264" sideWeight="0.4969743" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -999,7 +1029,8 @@
     <MESSAGE value="Minor additions" />
     <MESSAGE value="Faulty Movement" />
     <MESSAGE value="Movement fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Movement fixed" />
+    <MESSAGE value="JSON added and works. Ships have trouble turning left." />
+    <option name="LAST_COMMIT_MESSAGE" value="JSON added and works. Ships have trouble turning left." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1015,9 +1046,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1025,7 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1156,13 +1183,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/entity/GameObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Game/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1181,7 +1201,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1255,20 +1274,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Support/Utilities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63297874">
-          <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#314#315#0" expanded="false" />
-            <element signature="e#364#365#0" expanded="false" />
-            <element signature="e#428#429#0" expanded="false" />
-            <element signature="e#491#492#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/assets/stars.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -1278,7 +1283,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40761635">
           <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1286,7 +1290,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="202" column="30" selection-start-line="202" selection-start-column="30" selection-end-line="202" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1294,69 +1297,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Game/SpacePlane.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.413794">
-          <caret line="58" column="10" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Game/SpaceRender.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5117021">
-          <caret line="60" column="49" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/screen/GameScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1223#1224#0" expanded="false" />
-            <element signature="e#1267#1268#0" expanded="false" />
-            <element signature="e#2338#2339#0" expanded="false" />
-            <element signature="e#2366#2367#0" expanded="false" />
-            <element signature="e#2427#2428#0" expanded="false" />
-            <element signature="e#2455#2456#0" expanded="false" />
-            <element signature="e#3381#3382#0" expanded="false" />
-            <element signature="e#3408#3409#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Support/Assets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="74" selection-start-line="41" selection-start-column="74" selection-end-line="41" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2422#2423#0" expanded="false" />
-            <element signature="e#2456#2457#0" expanded="false" />
-            <element signature="e#2508#2509#0" expanded="false" />
-            <element signature="e#2544#2545#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/entity/Turret.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1364,23 +1304,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Support/Constant_Names.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/entity/Unit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="56" column="76" selection-start-line="56" selection-start-column="76" selection-end-line="56" selection-end-column="76" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1396,16 +1319,93 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Support/Utilities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="48" column="5" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/screen/GameScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Support/Constant_Names.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/entity/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1067#1068#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Zodiac.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30737135">
-          <caret line="18" column="65" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Support/Assets.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="74" selection-start-line="39" selection-start-column="74" selection-end-line="39" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/entity/Turret.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="78" selection-start-line="33" selection-start-column="78" selection-end-line="33" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#610#611#0" expanded="true" />
+            <element signature="e#680#681#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Game/SpacePlane.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="61" column="77" selection-start-line="61" selection-start-column="77" selection-end-line="61" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/Game/SpaceRender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="49" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/com/zodiac/entity/Unit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42592594">
+          <caret line="158" column="23" selection-start-line="158" selection-start-column="23" selection-end-line="158" selection-end-column="23" />
           <folding />
         </state>
       </provider>

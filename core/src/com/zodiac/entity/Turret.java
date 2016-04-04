@@ -22,17 +22,17 @@ public class Turret extends GameObject{
 
     public void update()
     {
-
+        getPolygon().setRotation(getPolygon().getRotation()+1);
     }
 
     public void setPosition(Polygon hostPolygon) {
-        if(target==null)
-            getPolygon().setRotation(hostPolygon.getRotation());
-        //float tempX = offsetX + hostPolygon.getX();
-        //float tempY = offsetY + hostPolygon.getY();
-        float tempX = MathUtils.sinDeg(hostPolygon.getRotation()) * offsetX + hostPolygon.getX();
-        float tempY = MathUtils.cosDeg(hostPolygon.getRotation()) * offsetY + hostPolygon.getY();
-        System.out.println(tempX+" "+tempY);
-        getPolygon().setPosition(tempX,tempY);    
+        //if(target==null)
+            //getPolygon().setRotation(hostPolygon.getRotation());
+        //float tempX = offsetX;//hostPolygon.getX();
+        //float tempY = offsetY;//hostPolygon.getY();
+        float tempX = MathUtils.cosDeg(Math.abs(hostPolygon.getRotation()-180)) * offsetX;
+        float tempY = MathUtils.sinDeg(Math.abs(hostPolygon.getRotation()-180)) * offsetY;
+        System.out.println(tempX+" "+tempY+ " "+hostPolygon.getRotation());
+        getPolygon().setPosition(tempX+hostPolygon.getX(),tempY+hostPolygon.getY());
     }
 }

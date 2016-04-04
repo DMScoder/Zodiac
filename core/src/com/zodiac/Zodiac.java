@@ -18,7 +18,7 @@ public class Zodiac extends Game {
 		IO.Open();
 		System.out.println(IO.getStat("Federation_Scout","Size"));
 		//Settings.Load();
-		//setScreen(new MenuScreen(this));
+		setScreen(new MenuScreen(this));
 	}
 
 	@Override

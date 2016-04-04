@@ -59,10 +59,9 @@ public class SpacePlane implements Plane{
         //Entities[3] = Wreckage;
 
         SpaceRender.setPlanet(Assets.Planet_Background,0,0,0,10);
-        for(int i=0;i<100;i++)
-            Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
-        for(int i=0;i<100;i++)
-            Entities[SHIPS].add(new Unit(100,100, Constant_Names.FEDERATION_GUNBOAT));
+        Entities[SHIPS].add(new Unit(0,0,Constant_Names.FEDERATION_GUNBOAT));
+        //for(int i=0;i<100000;i++)
+        //    Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
     }
 
     @Override

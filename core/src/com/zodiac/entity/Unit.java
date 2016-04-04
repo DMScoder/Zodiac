@@ -27,10 +27,10 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
     private Vector2 moveCoordinates = null;
     private float velocityX=0;
     private float velocityY=0;
-    private float maxVelocity = 500f;
+    private float maxVelocity = 700f;
     private float velocity = 0;
     private float acceleration = 0.1f;
-    private float turnRate = 3f;
+    private float turnRate = 1f;
     private int size = 1;
     private boolean turnInPlace = false;
 
@@ -43,8 +43,12 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         Stats();
     }
 
+    //Set the stats for the unit
+    //In future builds manual input will be replaced by JSON parsing in IO class
     public void Stats()
     {
+
+
         if(type== Constant_Names.FEDERATION_GUNBOAT)
         {
             maxVelocity = 500;
@@ -76,67 +80,108 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
                 turrets[i].update();
     }
 
+
+    //This drives the ship according to current heading and target heading
     private void move()
     {
+        //This means the ship has no move command
         if(moveCoordinates==null)
             return;
 
+        //Move the turrets only if the ship moves
         if(turrets!=null)
             for(int i=0;i<turrets.length;i++)
                 turrets[i].setPosition(getPolygon());
 
+        //Calculate target angle using inverse tangent
+        //lookup table decreases runtime
         float targetAngle = MathUtils.atan2(moveCoordinates.x-getPolygon().getX(),moveCoordinates.y-getPolygon().getY());
-        targetAngle = MathUtils.radiansToDegrees*targetAngle;
-        targetAngle = 360 - Utilities.convertToPositiveAngle(targetAngle);
 
+        //Convert to degrees
+        targetAngle = MathUtils.radiansToDegrees*targetAngle;
+
+        //Make the angle clockwise increasing
+        targetAngle = 360 - Utilities.normalizeAngle(targetAngle);
+
+        //Slightly decrease the velocity if the ship is still turning
         if(lastAngle!=0&&Math.abs(lastAngle-targetAngle)>1f)
             velocity*=.99f;
 
+        //Reset last angle to current angle for next frame
         lastAngle = getPolygon().getRotation();
+
+        //Here we apply movement based on angle
+        //Only turn if the unit does not have to turn in place or is facing the correct angle
         if(!turnInPlace||getPolygon().getRotation()==targetAngle)
         {
+            //Here we nudge the unit regardless of direction to smooth movement
             float boostX = MathUtils.cosDeg(targetAngle+90)*velocity*.1f+1;
             float boostY = MathUtils.sinDeg(targetAngle+90)*velocity*.1f+1;
 
+            //Apply movement differentials
             this.getPolygon().setPosition(getPolygon().getX()+velocityX, getPolygon().getY()+velocityY);
             this.getPolygon().setPosition(getPolygon().getX()+boostX, getPolygon().getY()+boostY);
 
+            //Change velocity depending on current factors
             velocityX = MathUtils.cosDeg(getPolygon().getRotation()+90)* velocity;
             velocityY = MathUtils.sinDeg(getPolygon().getRotation()+90)* velocity;
         }
 
-        if(targetAngle != getPolygon().getRotation())
+        //Check if the unit is almost at its destination
+        if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)< size * 10/turnRate)
         {
-            float turnLeft = getPolygon().getRotation()+turnRate;
-            float turnRight = Math.abs(Utilities.convertToPositiveAngle(getPolygon().getRotation()-turnRate));
-
-            if(Math.abs(turnLeft-targetAngle)<turnRate||Math.abs(turnRight-targetAngle)<turnRate)
-                getPolygon().setRotation(targetAngle);
-
-            else
-            {
-                if((Math.abs(targetAngle-turnRight)> Math.abs(targetAngle-turnLeft)
-                        &&Math.abs(targetAngle-turnRight-360)> Math.abs(targetAngle-turnLeft)))
-
-                    getPolygon().setRotation(turnLeft);
-                else
-                    getPolygon().setRotation(turnRight);
-            }
-        }
-
-        if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)< size * 100 + 50)
-        {
+            //Apply deceleration
             velocity *=.9;
-            if(velocity <= 1f)
+
+            //If the unit is barely moving we stop and clear its move coordinates
+            if(velocity<=.5f)
             {
                 velocity = 0;
-                //getPolygon().setPosition(moveCoordinates.x,moveCoordinates.y);
                 moveCoordinates = null;
             }
+
+            //Return because we don't want to change the approach angle
+            return;
         }
 
+        //Apply acceleration
         else if(velocity < maxVelocity)
             velocity += acceleration;
+
+        //Change the heading
+        //Check if the unit is on the right heading
+        if(targetAngle!=getPolygon().getRotation())
+        {
+            //If the unit is almost on the right heading we just set it to the right heading
+            if(Math.abs(targetAngle-getPolygon().getRotation())<=turnRate+.05f)
+            {
+                getPolygon().setRotation(targetAngle);
+                return;
+            }
+
+            //The angle is counter clockwise (most likely)
+            if(targetAngle-getPolygon().getRotation()<0)
+            {
+                //Check if the angle is actually closer clockwise
+                if(360-getPolygon().getRotation()+targetAngle<getPolygon().getRotation()-targetAngle)
+                    getPolygon().setRotation(Utilities.normalizeAngle(getPolygon().getRotation()+turnRate));
+
+                //Nope, angle is closer counterclockwise
+                else
+                    getPolygon().setRotation(Utilities.normalizeAngle(getPolygon().getRotation()-turnRate));
+            }
+
+            //The angle is clockwise (most likely)
+            else
+            {
+                //Check if the angle is actually closer counterclockwise
+                if(360-targetAngle+getPolygon().getRotation()<targetAngle-getPolygon().getRotation())
+                    getPolygon().setRotation(Utilities.normalizeAngle(getPolygon().getRotation()-turnRate));
+                //Nope, the angle is closer clockwise
+                else
+                    getPolygon().setRotation(Utilities.normalizeAngle(getPolygon().getRotation()+turnRate));
+            }
+        }
     }
 
     public void drawTurrets(Batch batch)
@@ -175,6 +220,7 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         return turrets;
     }
 
+    //Apply a new target vector
     @Override
     public void setMove(Vector2 vector2) {
         moveCoordinates = vector2;
