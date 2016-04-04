@@ -56,9 +56,8 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
             turnRate = .5f;
             size = 4;
             turrets = new Turret[2];
-            Rectangle rectangle = getPolygon().getBoundingRectangle();
-            turrets[0] = new Turret(getPolygon().getX(),getPolygon().getY(),-75+rectangle.getWidth()/2,-30+rectangle.getHeight()/2,Constant_Names.FEDERATION_500MM);
-            turrets[1] = new Turret(getPolygon().getX(),getPolygon().getY(),15+rectangle.getWidth()/2,-30+rectangle.getHeight()/2,Constant_Names.FEDERATION_500MM);
+            turrets[0] = new Turret(getWidth()/2,getHeight()/2,getPolygon(),9,45,270,Constant_Names.FEDERATION_500MM);
+            turrets[1] = new Turret(getWidth()/2,getHeight()/2,getPolygon(),169,45,90,Constant_Names.FEDERATION_500MM);
         }
     }
 
@@ -91,7 +90,7 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         //Move the turrets only if the ship moves
         if(turrets!=null)
             for(int i=0;i<turrets.length;i++)
-                turrets[i].setPosition(getPolygon());
+                turrets[i].setPosition();
 
         //Calculate target angle using inverse tangent
         //lookup table decreases runtime

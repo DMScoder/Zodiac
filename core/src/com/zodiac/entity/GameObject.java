@@ -7,11 +7,13 @@ import com.badlogic.gdx.math.Polygon;
 /**
  * Created by SYSTEM on 3/10/2016.
  */
-public class GameObject {
+public abstract class GameObject {
 
     Texture texture;
     private float zHeight = 0;
     private Polygon polygon;
+    private float width;
+    private float height;
 
     public GameObject(float x, float y,Texture texture)
     {
@@ -19,6 +21,8 @@ public class GameObject {
         polygon = new Polygon(new float[]{0,0,texture.getWidth(),0,texture.getWidth(),texture.getHeight(),0,texture.getHeight()});
         polygon.setOrigin(texture.getWidth()/2,texture.getHeight()/2);
         polygon.setPosition(x,y);
+        width = texture.getWidth();
+        height = texture.getHeight();
     }
 
     public void draw(Batch batch)
@@ -43,5 +47,13 @@ public class GameObject {
 
     public void setzHeight(float zHeight) {
         this.zHeight = zHeight;
+    }
+
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
     }
 }
