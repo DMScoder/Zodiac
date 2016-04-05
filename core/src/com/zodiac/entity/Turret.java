@@ -18,6 +18,7 @@ public class Turret extends GameObject{
     float hostCenterY;
     float defaultRotation=0;
     float turnRate = 2f;
+    boolean lockRotation = false;
     
     public Turret(float hostCenterX, float hostCenterY,Polygon hostPolygon, float angle, float radius, float defaultRotation, int type) {
         super(hostCenterX, hostCenterY, Assets.getTurretType(type));
@@ -36,6 +37,9 @@ public class Turret extends GameObject{
     }
 
     public void setPosition() {
+        if(lockRotation)
+            getPolygon().setRotation(hostPolygon.getRotation()+defaultRotation);
+
         float tempX = MathUtils.cosDeg(hostPolygon.getRotation()+angle) * radius;
         float tempY = MathUtils.sinDeg(hostPolygon.getRotation()+angle) * radius;
         getPolygon().setPosition(hostPolygon.getX()+hostCenterX-this.getWidth()/2+tempX,hostPolygon.getY()+hostCenterY-this.getHeight()/2+tempY);
@@ -43,12 +47,18 @@ public class Turret extends GameObject{
 
     public void rotate()
     {
+        if(lockRotation)
+            return;
+
         float targetAngle;
 
         //Change the heading
         //Check if the unit is on the right heading
         if(target!=null)
+        {
             targetAngle = MathUtils.atan2(target.getPolygon().getX()-getPolygon().getX(),target.getPolygon().getY()-getPolygon().getY());
+            lockRotation = false;
+        }
 
         else
             targetAngle = Utilities.normalizeAngle(defaultRotation + hostPolygon.getRotation());
@@ -59,6 +69,7 @@ public class Turret extends GameObject{
             if(Math.abs(targetAngle-getPolygon().getRotation())<=turnRate+.05f)
             {
                 getPolygon().setRotation(targetAngle);
+                lockRotation = true;
                 return;
             }
 

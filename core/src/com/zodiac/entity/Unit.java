@@ -33,6 +33,7 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
     private float turnRate = 1f;
     private int size = 1;
     private boolean turnInPlace = false;
+    private boolean slowing = false;
 
     private int type;
 
@@ -51,9 +52,9 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
         if(type== Constant_Names.FEDERATION_GUNBOAT)
         {
-            maxVelocity = 500;
-            acceleration = .05f;
-            turnRate = .5f;
+            maxVelocity = 100;
+            acceleration = .1f;
+            turnRate = 1f;
             size = 4;
             turrets = new Turret[2];
             turrets[0] = new Turret(getWidth()/2,getHeight()/2,getPolygon(),9,45,270,Constant_Names.FEDERATION_500MM);
@@ -96,6 +97,12 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         //lookup table decreases runtime
         float targetAngle = MathUtils.atan2(moveCoordinates.x-getPolygon().getX(),moveCoordinates.y-getPolygon().getY());
 
+        if(slowing)
+        {
+            finalApproach();
+            return;
+        }
+
         //Convert to degrees
         targetAngle = MathUtils.radiansToDegrees*targetAngle;
 
@@ -104,22 +111,24 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
         //Slightly decrease the velocity if the ship is still turning
         if(lastAngle!=0&&Math.abs(lastAngle-targetAngle)>1f)
-            velocity*=.99f;
+            velocity*=.975f;
 
         //Reset last angle to current angle for next frame
         lastAngle = getPolygon().getRotation();
+
+        rotate(targetAngle);
 
         //Here we apply movement based on angle
         //Only turn if the unit does not have to turn in place or is facing the correct angle
         if(!turnInPlace||getPolygon().getRotation()==targetAngle)
         {
             //Here we nudge the unit regardless of direction to smooth movement
-            float boostX = MathUtils.cosDeg(targetAngle+90)*velocity*.1f+1;
-            float boostY = MathUtils.sinDeg(targetAngle+90)*velocity*.1f+1;
+            float boostX = MathUtils.cosDeg(targetAngle+90)*velocity*.1f;
+            float boostY = MathUtils.sinDeg(targetAngle+90)*velocity*.1f;
 
             //Apply movement differentials
             this.getPolygon().setPosition(getPolygon().getX()+velocityX, getPolygon().getY()+velocityY);
-            this.getPolygon().setPosition(getPolygon().getX()+boostX, getPolygon().getY()+boostY);
+            //this.getPolygon().setPosition(getPolygon().getX()+boostX, getPolygon().getY()+boostY);
 
             //Change velocity depending on current factors
             velocityX = MathUtils.cosDeg(getPolygon().getRotation()+90)* velocity;
@@ -127,26 +136,18 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         }
 
         //Check if the unit is almost at its destination
-        if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)< size * 10/turnRate)
+        if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)< size * 100)
         {
-            //Apply deceleration
-            velocity *=.9;
-
-            //If the unit is barely moving we stop and clear its move coordinates
-            if(velocity<=.5f)
-            {
-                velocity = 0;
-                moveCoordinates = null;
-            }
-
-            //Return because we don't want to change the approach angle
-            return;
+            slowing = true;
         }
 
         //Apply acceleration
         else if(velocity < maxVelocity)
             velocity += acceleration;
+    }
 
+    private void rotate(float targetAngle)
+    {
         //Change the heading
         //Check if the unit is on the right heading
         if(targetAngle!=getPolygon().getRotation())
@@ -165,7 +166,7 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
                 if(360-getPolygon().getRotation()+targetAngle<getPolygon().getRotation()-targetAngle)
                     getPolygon().setRotation(Utilities.normalizeAngle(getPolygon().getRotation()+turnRate));
 
-                //Nope, angle is closer counterclockwise
+                    //Nope, angle is closer counterclockwise
                 else
                     getPolygon().setRotation(Utilities.normalizeAngle(getPolygon().getRotation()-turnRate));
             }
@@ -176,10 +177,41 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
                 //Check if the angle is actually closer counterclockwise
                 if(360-targetAngle+getPolygon().getRotation()<targetAngle-getPolygon().getRotation())
                     getPolygon().setRotation(Utilities.normalizeAngle(getPolygon().getRotation()-turnRate));
-                //Nope, the angle is closer clockwise
+                    //Nope, the angle is closer clockwise
                 else
                     getPolygon().setRotation(Utilities.normalizeAngle(getPolygon().getRotation()+turnRate));
             }
+        }
+    }
+
+    private void finalApproach()
+    {
+        float boostX = velocity * .5f;
+        float boostY = velocity * .5f;
+
+        if (moveCoordinates.x - getPolygon().getX() < 0)
+            boostX*=-1;
+        if (moveCoordinates.y - getPolygon().getY() < 0)
+            boostY*=-1;
+
+
+        //rotate(targetAngle);
+        getPolygon().setPosition(getPolygon().getX()+boostX,getPolygon().getY()+boostY);
+
+        //Apply deceleration
+        velocity *=.9;
+
+        //If the unit is barely moving we stop and clear its move coordinates
+        if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)<size*5)
+        {
+            velocity = 0;
+            getPolygon().setPosition(moveCoordinates.x,moveCoordinates.y);
+            //Move the turrets only if the ship moves
+            if(turrets!=null)
+                for(int i=0;i<turrets.length;i++)
+                    turrets[i].setPosition();
+            moveCoordinates = null;
+            slowing = false;
         }
     }
 
@@ -222,6 +254,7 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
     //Apply a new target vector
     @Override
     public void setMove(Vector2 vector2) {
+        slowing = false;
         moveCoordinates = vector2;
         lastAngle = 0;
     }

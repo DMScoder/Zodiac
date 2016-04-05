@@ -14,6 +14,6 @@ public class MainGrid {
         subgrid = new SubGrid[width][height];
         for(int i=0;i<width;i++)
             for(int j=0;j<height;j++)
-                subgrid[i][j] = new SubGrid(10,10,cellSize);
+                subgrid[i][j] = new SubGrid(10,10);
     }
 }

@@ -47,7 +47,7 @@ public class SpaceRender {
     public static void drawBackground(Batch batch)
     {
         batch.draw(Assets.Space_Background,0+OffsetX-Gdx.graphics.getWidth()*SpacePlane.camera.zoom/2,0+OffsetY-Gdx.graphics.getHeight()*SpacePlane.camera.zoom/2,Gdx.graphics.getWidth()*SpacePlane.camera.zoom,Gdx.graphics.getHeight()*SpacePlane.camera.zoom);
-        batch.draw(planetTexture,planetX+OffsetX*.8f,planetY+OffsetY*.8f,planetTexture.getWidth()/2,
+        batch.draw(planetTexture,planetX+OffsetX*planetDistance,planetY+OffsetY*planetDistance,planetTexture.getWidth()/2,
                 planetTexture.getHeight()/2,planetTexture.getWidth(),
                 planetTexture.getHeight(),planetScale,planetScale,0,0,0,
                 planetTexture.getWidth(),planetTexture.getHeight(),false,false);

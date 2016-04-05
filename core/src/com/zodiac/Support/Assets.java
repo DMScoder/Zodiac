@@ -37,7 +37,7 @@ public class Assets {
         SoundEffects = new Sound[SOUND_COUNT];
         Menu_Background = new Texture(Gdx.files.internal("stars.jpg"));
         Test_Texture = new Texture(Gdx.files.internal("badlogic.jpg"));
-        Planet_Background = new Texture(Gdx.files.internal("Planets/TerranPlanet1.png"));
+        Planet_Background = new Texture(Gdx.files.internal("Planets/VolcanicPlanet1.png"));
         Space_Background = new Texture(Gdx.files.internal("Planets/Background.png"));
         Wreckage = new Texture(Gdx.files.internal("Props/Wreckage1.png"));
 

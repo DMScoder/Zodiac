@@ -22,6 +22,8 @@ public class Cell {
     //Some units are amphibious
     public static final int SEMI_PASS = 2;
 
+    private int terraintype;
+
     public Cell()
     {
 

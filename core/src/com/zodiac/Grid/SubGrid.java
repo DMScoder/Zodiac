@@ -7,7 +7,7 @@ public class SubGrid {
 
     Cell[][] cells;
 
-    public SubGrid(int width, int height, int cellSize)
+    public SubGrid(int width, int height)
     {
         cells = new Cell[width][height];
         for(int i=0;i<width;i++)

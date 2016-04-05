@@ -44,6 +44,11 @@ public class Utilities {
         return (float)(Math.sqrt(Math.pow(one.getPolygon().getX()- two.getPolygon().getX(),2)+Math.pow(one.getPolygon().getY()- two.getPolygon().getY(),2)));
     }
 
+    public static float distanceReal(GameObject one, float x, float y)
+    {
+        return (float)(Math.sqrt(Math.pow(one.getPolygon().getX()- x,2)+Math.pow(one.getPolygon().getY()- y,2)));
+    }
+
     //This function takes a target angle and makes sure it is between 0-359 inclusive
     public static float normalizeAngle(float degrees)
     {

@@ -52,16 +52,16 @@ public class SpacePlane implements Plane{
 
     public SpacePlane()
     {
-        mainGrid = new MainGrid(50,50,500);
+        mainGrid = new MainGrid(50,50,5000);
         Entities[0] = new ArrayList<Unit>();
         //Entities[1] = new ArrayList()
         //Entities[2] = InTransit;
         //Entities[3] = Wreckage;
 
-        SpaceRender.setPlanet(Assets.Planet_Background,0,0,0,10);
-        Entities[SHIPS].add(new Unit(0,0,Constant_Names.FEDERATION_GUNBOAT));
-        //for(int i=0;i<100000;i++)
-        //    Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_SCOUT));
+        SpaceRender.setPlanet(Assets.Planet_Background,0,0,.5f,10);
+        //Entities[SHIPS].add(new Unit(0,0,Constant_Names.FEDERATION_GUNBOAT));
+        for(int i=0;i<1000;i++)
+            Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_GUNBOAT));
     }
 
     @Override
@@ -78,7 +78,7 @@ public class SpacePlane implements Plane{
         SpaceRender.draw(batch);
         batch.end();
         SpaceRender.drawSelection(selected);
-        //SpaceRender.drawGrid(mainGrid);
+        SpaceRender.drawGrid(mainGrid);
     }
 
     @Override
