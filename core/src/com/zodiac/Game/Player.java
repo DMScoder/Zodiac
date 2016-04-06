@@ -14,6 +14,8 @@ public class Player {
     private ArrayList<Player> enemies = new ArrayList<Player>();
     private ArrayList<Player> allies = new ArrayList<Player>();
 
+    public static Player THE_PLAYER = new Player(Color.RED);
+
     public Player(Color color)
     {
         this.color = color;

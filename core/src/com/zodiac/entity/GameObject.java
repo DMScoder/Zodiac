@@ -56,4 +56,14 @@ public abstract class GameObject {
     public float getHeight() {
         return height;
     }
+
+    public float getX()
+    {
+        return polygon.getX();
+    }
+
+    public float getY()
+    {
+        return polygon.getY();
+    }
 }

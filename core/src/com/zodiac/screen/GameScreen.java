@@ -4,6 +4,7 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.zodiac.Game.Plane;
+import com.zodiac.Game.Player;
 import com.zodiac.Game.SpacePlane;
 import com.zodiac.Game.SurfacePlane;
 import com.zodiac.Support.Assets;

@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.*;
+import com.zodiac.Grid.MainGrid;
 import com.zodiac.Support.Settings;
 import com.zodiac.entity.Unit;
 import com.zodiac.Support.Constant_Names;
@@ -22,6 +23,8 @@ public class SurfacePlane implements Plane{
     public static ArrayList[] Entities = new ArrayList[4];
     static boolean ACTIVE = false;
 
+    MainGrid mainGrid;
+
     public final static int GROUND_UNITS = 0;
     public final static int PROJECTILES = 1;
     public final static int FLYING_UNITS = 2;
@@ -31,12 +34,13 @@ public class SurfacePlane implements Plane{
 
     public SurfacePlane()
     {
+        mainGrid = new MainGrid(50,50,5000);
         Entities[GROUND_UNITS] = new ArrayList<Unit>();
         //Entities[1] = Projectiles;
         //Entities[2] = Flying_Units;
         //Entities[3] = Decals;
 
-        Entities[GROUND_UNITS].add(new Unit(0,0, Constant_Names.FEDERATION_MAIN_TANK));
+        //Entities[GROUND_UNITS].add(new Unit(0,0, Constant_Names.FEDERATION_MAIN_TANK));
     }
 
     @Override
@@ -58,7 +62,7 @@ public class SurfacePlane implements Plane{
         if(ACTIVE)
             cameraMovement();
         for(int i=0;i<Entities[GROUND_UNITS].size();i++)
-            ((Unit)Entities[GROUND_UNITS].get(i)).update();
+            ((Unit)Entities[GROUND_UNITS].get(i)).update(mainGrid);
     }
 
     @Override

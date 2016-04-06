@@ -2,8 +2,9 @@ package com.zodiac.entity;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.zodiac.Game.Player;
+import com.zodiac.Grid.MainGrid;
 import com.zodiac.Support.Assets;
 import com.zodiac.Support.Constant_Names;
 import com.zodiac.Support.Utilities;
@@ -13,11 +14,15 @@ import com.zodiac.Support.Utilities;
  */
 public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
-    //
+    //Controlling player
+    private Player player;
+
+    //Ship stats
     private float hull;
     private float shields;
     private float armor;
     private Unit target;
+    private int type;
 
     //List of all attached turrets
     private Turret[] turrets;
@@ -35,12 +40,12 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
     private boolean turnInPlace = false;
     private boolean slowing = false;
 
-    private int type;
-
-    public Unit(float x, float y, int type)
+    public Unit(float x, float y, int type, Player player,MainGrid mainGrid)
     {
         super(x,y, Assets.getType(type));
         this.type = type;
+        this.player = player;
+        mainGrid.unitAt(this);
         Stats();
     }
 
@@ -57,8 +62,8 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
             turnRate = 1f;
             size = 4;
             turrets = new Turret[2];
-            turrets[0] = new Turret(getWidth()/2,getHeight()/2,getPolygon(),9,45,270,Constant_Names.FEDERATION_500MM);
-            turrets[1] = new Turret(getWidth()/2,getHeight()/2,getPolygon(),169,45,90,Constant_Names.FEDERATION_500MM);
+            turrets[0] = new Turret(getWidth()/2,getHeight()/2,this,9,45,270,Constant_Names.FEDERATION_500MM);
+            turrets[1] = new Turret(getWidth()/2,getHeight()/2,this,169,45,90,Constant_Names.FEDERATION_500MM);
         }
     }
 
@@ -72,9 +77,11 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
     }
 
-    public void update()
+    public void update(MainGrid mainGrid)
     {
-        move();
+        if(move(mainGrid))
+            mainGrid.unitAt(this);
+
         if(turrets!=null)
             for(int i=0;i<turrets.length;i++)
                 turrets[i].update();
@@ -82,11 +89,11 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
 
     //This drives the ship according to current heading and target heading
-    private void move()
+    private boolean move(MainGrid mainGrid)
     {
         //This means the ship has no move command
         if(moveCoordinates==null)
-            return;
+            return false;
 
         //Move the turrets only if the ship moves
         if(turrets!=null)
@@ -97,10 +104,12 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         //lookup table decreases runtime
         float targetAngle = MathUtils.atan2(moveCoordinates.x-getPolygon().getX(),moveCoordinates.y-getPolygon().getY());
 
+        mainGrid.unitMove(this);
+
         if(slowing)
         {
             finalApproach();
-            return;
+            return true;
         }
 
         //Convert to degrees
@@ -144,6 +153,8 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         //Apply acceleration
         else if(velocity < maxVelocity)
             velocity += acceleration;
+
+        return true;
     }
 
     private void rotate(float targetAngle)
@@ -280,5 +291,13 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
     @Override
     public void select() {
 
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

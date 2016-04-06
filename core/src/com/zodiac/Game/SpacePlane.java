@@ -2,6 +2,7 @@ package com.zodiac.Game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -9,8 +10,11 @@ import com.badlogic.gdx.math.*;
 import com.zodiac.Grid.MainGrid;
 import com.zodiac.Support.Assets;
 import com.zodiac.Support.Settings;
+import com.zodiac.entity.Projectile;
 import com.zodiac.entity.Unit;
 import com.zodiac.Support.Constant_Names;
+import com.zodiac.entity.Wreckage;
+import com.zodiac.screen.GameScreen;
 
 import java.util.ArrayList;
 
@@ -53,15 +57,25 @@ public class SpacePlane implements Plane{
     public SpacePlane()
     {
         mainGrid = new MainGrid(50,50,5000);
-        Entities[0] = new ArrayList<Unit>();
-        //Entities[1] = new ArrayList()
-        //Entities[2] = InTransit;
-        //Entities[3] = Wreckage;
+        Entities[SHIPS] = new ArrayList<Unit>();
+        Entities[PROJECTILES] = new ArrayList<Projectile>();
+        //Entities[2] = inTransit;
+        Entities[WRECKAGE] = new ArrayList<Wreckage>();
+
+        testSetup();
+    }
+
+    public void testSetup()
+    {
+        Player.THE_PLAYER.setColor(Color.BLUE);
+        Player enemy = new Player(Color.RED);
+
+        Player.THE_PLAYER.addEnemy(enemy);
+        enemy.addEnemy(Player.THE_PLAYER);
 
         SpaceRender.setPlanet(Assets.Planet_Background,0,0,.5f,10);
-        //Entities[SHIPS].add(new Unit(0,0,Constant_Names.FEDERATION_GUNBOAT));
-        for(int i=0;i<1000;i++)
-            Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_GUNBOAT));
+        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_GUNBOAT,Player.THE_PLAYER,mainGrid));
+        Entities[SHIPS].add(new Unit(100000,100000,Constant_Names.FEDERATION_GUNBOAT,enemy,mainGrid));
     }
 
     @Override
@@ -86,7 +100,7 @@ public class SpacePlane implements Plane{
         if(ACTIVE)
             cameraMovement();
         for(int i=0;i<Entities[SHIPS].size();i++)
-            ((Unit)Entities[SHIPS].get(i)).update();
+            ((Unit)Entities[SHIPS].get(i)).update(mainGrid);
     }
 
     private void manageSounds()
@@ -149,7 +163,7 @@ public class SpacePlane implements Plane{
         for(int i=0;i<Entities[SHIPS].size();i++) {
             Unit unit = ((Unit) Entities[SHIPS].get(i));
 
-            if(Intersector.overlapConvexPolygons(unit.getPolygon(),rPoly))
+            if(Intersector.overlapConvexPolygons(unit.getPolygon(),rPoly)&&unit.getPlayer().equals(Player.THE_PLAYER))
             {
                 selected.add(unit);
             }
@@ -167,7 +181,7 @@ public class SpacePlane implements Plane{
 
             Unit unit = (Unit) Entities[SHIPS].get(i);
 
-            if (unit.getPolygon().contains(vector2)) {
+            if (unit.getPolygon().contains(vector2)&&!unit.getPlayer().equals(Player.THE_PLAYER)) {
 
                 for(int j=0;j<selected.size();j++)
                 {
@@ -223,7 +237,7 @@ public class SpacePlane implements Plane{
 
             Unit unit = (Unit) Entities[SHIPS].get(i);
 
-            if (unit.getPolygon().contains(vector2)) {
+            if (unit.getPolygon().contains(vector2)&&unit.getPlayer().equals(Player.THE_PLAYER)) {
 
                 if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT))
                     selected.add(unit);

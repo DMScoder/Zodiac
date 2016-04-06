@@ -10,8 +10,9 @@ import com.zodiac.Support.Utilities;
  */
 public class Turret extends GameObject{
 
-    Unit target=null;
-    Polygon hostPolygon;
+    private Unit target=null;
+    private Unit hostUnit;
+    private Polygon hostPolygon;
     float angle;
     float radius;
     float hostCenterX;
@@ -20,14 +21,15 @@ public class Turret extends GameObject{
     float turnRate = 2f;
     boolean lockRotation = false;
     
-    public Turret(float hostCenterX, float hostCenterY,Polygon hostPolygon, float angle, float radius, float defaultRotation, int type) {
+    public Turret(float hostCenterX, float hostCenterY,Unit hostUnit, float angle, float radius, float defaultRotation, int type) {
         super(hostCenterX, hostCenterY, Assets.getTurretType(type));
         this.hostCenterX = hostCenterX;
         this.hostCenterY = hostCenterY;
         this.radius = radius;
         this.angle = angle;
         this.defaultRotation=defaultRotation;
-        this.hostPolygon = hostPolygon;
+        this.hostUnit = hostUnit;
+        this.hostPolygon = hostUnit.getPolygon();
         setPosition();
     }
 
@@ -96,5 +98,9 @@ public class Turret extends GameObject{
                     getPolygon().setRotation(Utilities.normalizeAngle(getPolygon().getRotation()+turnRate));
             }
         }
+    }
+
+    public Unit getHostUnit() {
+        return hostUnit;
     }
 }

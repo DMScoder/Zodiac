@@ -69,16 +69,23 @@ public class SpaceRender {
         for(int i=0;i<mainGrid.subgrid.length;i++)
             for(int j=0;j<mainGrid.subgrid[i].length;j++)
             {
+
+                //Fill in subgrid cells
                 shapeRenderer.setColor(Color.BLUE);
                 for(int k=0;k<10;k++)
                     for(int l=0;l<10;l++)
-                        shapeRenderer.rect((i-mainGrid.subgrid.length/2)*mainGrid.cellSize*10+mainGrid.cellSize*k,
-                                (j-mainGrid.subgrid[i].length/2)*mainGrid.cellSize*10+mainGrid.cellSize*l,
-                                mainGrid.cellSize,mainGrid.cellSize);
+                        shapeRenderer.rect((i-mainGrid.subgrid.length/2)* mainGrid.getCellSize() *10+ mainGrid.getCellSize() *k,
+                                (j-mainGrid.subgrid[i].length/2)* mainGrid.getCellSize() *10+ mainGrid.getCellSize() *l,
+                                mainGrid.getCellSize(), mainGrid.getCellSize());
+
+                //Fill in subgrid
                 shapeRenderer.setColor(Color.GREEN);
-                shapeRenderer.rect((i-mainGrid.subgrid.length/2)*mainGrid.cellSize*10,
-                        (j-mainGrid.subgrid[i].length/2)*mainGrid.cellSize*10,
-                        mainGrid.cellSize*10,mainGrid.cellSize*10);
+                if(mainGrid.subgrid[i][j].containsUnit())
+                    shapeRenderer.setColor(Color.RED);
+
+                shapeRenderer.rect((i-mainGrid.subgrid.length/2)* mainGrid.getCellSize() *10,
+                        (j-mainGrid.subgrid[i].length/2)* mainGrid.getCellSize() *10,
+                        mainGrid.getCellSize() *10, mainGrid.getCellSize() *10);
             }
         shapeRenderer.end();
     }
