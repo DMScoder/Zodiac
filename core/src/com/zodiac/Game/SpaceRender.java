@@ -4,11 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g3d.particles.ResourceData;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.zodiac.Grid.MainGrid;
 import com.zodiac.Support.Assets;
+import com.zodiac.entity.Projectile;
 import com.zodiac.entity.Unit;
 
 import java.util.ArrayList;
@@ -90,12 +89,12 @@ public class SpaceRender {
         shapeRenderer.end();
     }
 
-    public static void drawUnits(Batch batch)
-    {
-        for(int i = 0;i<SpacePlane.Entities[SpacePlane.SHIPS].size();i++)
-        {
-            ((Unit)SpacePlane.Entities[SpacePlane.SHIPS].get(i)).draw(batch);
-            ((Unit)SpacePlane.Entities[SpacePlane.SHIPS].get(i)).drawTurrets(batch);
+    public static void drawUnits(Batch batch) {
+
+        for (int i = 0; i < SpacePlane.Entities[SpacePlane.UNITS].size(); i++) {
+            ((Unit) SpacePlane.Entities[SpacePlane.UNITS].get(i)).draw(batch);
+            ((Unit) SpacePlane.Entities[SpacePlane.UNITS].get(i)).drawTurrets(batch);
+
         }
     }
 
@@ -113,6 +112,7 @@ public class SpaceRender {
 
     public static void drawProjectiles(Batch batch)
     {
-
+        for(int i=0;i<SpacePlane.Entities[SpacePlane.PROJECTILES].size();i++)
+            ((Projectile)SpacePlane.Entities[SpacePlane.PROJECTILES].get(i)).draw(batch);
     }
 }

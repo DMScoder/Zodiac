@@ -3,7 +3,10 @@ package com.zodiac.Support;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.zodiac.entity.Projectile;
 
 /**
  * Created by SYSTEM on 3/10/2016.
@@ -24,6 +27,7 @@ public class Assets {
     public static Texture Wreckage;
     public static Texture[] Ships;
     public static Texture[] Turrets;
+    public static Texture[] Projectiles;
     public static Sound[] SoundEffects;
 
     public static Music Main_Menu_Music = Gdx.audio.newMusic(Gdx.files.internal("Sound/Music/MainTheme.mp3"));
@@ -35,6 +39,7 @@ public class Assets {
         Ships = new Texture[SHIP_COUNT];
         Turrets = new Texture[TURRET_COUNT];
         SoundEffects = new Sound[SOUND_COUNT];
+        Projectiles = new Texture[TURRET_COUNT];
         Menu_Background = new Texture(Gdx.files.internal("stars.jpg"));
         Test_Texture = new Texture(Gdx.files.internal("badlogic.jpg"));
         Planet_Background = new Texture(Gdx.files.internal("Planets/VolcanicPlanet1.png"));
@@ -45,8 +50,14 @@ public class Assets {
         Ships[Constant_Names.FEDERATION_MAIN_TANK] = new Texture(Gdx.files.internal("Ship/Federation_MainBattle_Tank.png"));
         Ships[Constant_Names.FEDERATION_GUNBOAT] = new Texture(Gdx.files.internal("Ship/Federation_Gunboat.png"));
 
-        Turrets[Constant_Names.FEDERATION_MAIN_TANK_TURRET] = new Texture(Gdx.files.internal("Ship/Federation_MainBattle_TankTurret.png"));
-        Turrets[Constant_Names.FEDERATION_500MM] = new Texture(Gdx.files.internal("Ship/Federation_500mm_Turret.png"));
+        Turrets[Constant_Names.FEDERATION_TURRET_MBT] = new Texture(Gdx.files.internal("Ship/Federation_MainBattle_TankTurret.png"));
+        Turrets[Constant_Names.FEDERATION_TURRET_500MM] = new Texture(Gdx.files.internal("Ship/Federation_500mm_Turret.png"));
+
+        Pixmap pixmap = new Pixmap(64,64, Pixmap.Format.RGBA8888);
+        pixmap.setColor(Color.RED);
+        pixmap.fill();
+        Projectiles[0] = new Texture(Gdx.files.internal("Projectiles/Federation_Railgun_500mm.png"));
+        pixmap.dispose();
 
         SoundEffects[0] = Gdx.audio.newSound(Gdx.files.internal("Sound/Effects/FighterCraft.wav"));
     }
@@ -58,4 +69,5 @@ public class Assets {
     public static Texture getTurretType(int type) {
         return Turrets[type];
     }
+    public static Texture getProjectile(int type){return Projectiles[type];}
 }

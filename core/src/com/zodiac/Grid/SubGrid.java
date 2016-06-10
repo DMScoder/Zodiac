@@ -1,5 +1,6 @@
 package com.zodiac.Grid;
 
+import com.zodiac.Game.Player;
 import com.zodiac.entity.Unit;
 
 import java.util.ArrayList;
@@ -37,6 +38,16 @@ public class SubGrid {
                 arrayList.remove(unit);
                 return;
             }
+    }
+
+    public Unit getEnemy(Player player)
+    {
+        if(!containsUnit())
+            return null;
+        for(Unit unit : arrayList)
+            if(unit.getPlayer().isEnemy(player))
+                return unit;
+        return null;
     }
 
     public boolean containsUnit()

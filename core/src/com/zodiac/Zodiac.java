@@ -16,7 +16,6 @@ public class Zodiac extends Game {
 		batch = new SpriteBatch();
 		Assets.Load();
 		IO.Open();
-		System.out.println(IO.getStat("Federation_Scout","Size"));
 		//Settings.Load();
 		setScreen(new MenuScreen(this));
 	}

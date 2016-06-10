@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by SYSTEM on 3/10/2016.
  */
-public class SurfacePlane implements Plane{
+public class SurfacePlane extends Plane{
 
     static OrthographicCamera camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
     SpacePlane space;
@@ -57,7 +57,7 @@ public class SurfacePlane implements Plane{
         batch.end();
         SurfaceRender.drawSelection(selected);
     }
-    @Override
+
     public void update() {
         if(ACTIVE)
             cameraMovement();
@@ -165,7 +165,7 @@ public class SurfacePlane implements Plane{
             selected.clear();
     }
 
-    private void cameraMovement()
+    void cameraMovement()
     {
         float cameraSpeed = 5;
         if(Gdx.input.isKeyPressed(Settings.TOGGLE_CAMERA_SPEED))
@@ -193,7 +193,6 @@ public class SurfacePlane implements Plane{
             ACTIVE = true;
     }
 
-    @Override
     public void addPlane(Plane plane) {
         space = (SpacePlane) plane;
     }

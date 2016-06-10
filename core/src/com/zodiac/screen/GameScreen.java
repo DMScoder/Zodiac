@@ -2,6 +2,7 @@ package com.zodiac.screen;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.zodiac.Game.Plane;
 import com.zodiac.Game.Player;
@@ -21,7 +22,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
     Zodiac game;
     SurfacePlane surface;
     SpacePlane space;
-    Plane activePlane;
+    static Plane activePlane;
     boolean dragging;
     int startDragX;
     int startDragY;
@@ -30,7 +31,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
 
     public GameScreen(Zodiac game)
     {
-        //SoundManager.PlayMusic(Assets.Game_Music);
+        SoundManager.PlayMusic(Assets.Game_Music);
         this.game=game;
         init();
     }
@@ -150,5 +151,10 @@ public class GameScreen extends ScreenAdapter implements InputProcessor {
     {
         activePlane.scrolled(amount);
         return false;
+    }
+
+    public static Plane getActivePlane()
+    {
+        return activePlane;
     }
 }

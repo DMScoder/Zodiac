@@ -27,6 +27,9 @@ public class Utilities {
 
     public static float distanceHeuristic(GameObject one, GameObject two)
     {
+        if(one==null||two==null)
+            return Float.MAX_VALUE;
+
         return Math.abs(one.getPolygon().getX()- two.getPolygon().getX())+Math.abs(one.getPolygon().getY()- two.getPolygon().getY());
     }
 

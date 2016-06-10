@@ -9,12 +9,10 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.*;
 import com.zodiac.Grid.MainGrid;
 import com.zodiac.Support.Assets;
-import com.zodiac.Support.Settings;
 import com.zodiac.entity.Projectile;
 import com.zodiac.entity.Unit;
 import com.zodiac.Support.Constant_Names;
 import com.zodiac.entity.Wreckage;
-import com.zodiac.screen.GameScreen;
 
 import java.util.ArrayList;
 
@@ -35,21 +33,10 @@ Code for use with snapshot array
  array.end();
  */
 
-public class SpacePlane implements Plane{
+public class SpacePlane extends Plane{
 
     SurfacePlane surface;
-    static OrthographicCamera camera = new OrthographicCamera(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-    static boolean ACTIVE = true;
-    final static float UNIT_SPACING = 100;
-
-    final static float MAX_ZOOM = 500;
-    final static float MIN_ZOOM = 2;
-    public static ArrayList[] Entities = new ArrayList[4];
-    ArrayList<Unit> selected = new ArrayList<Unit>();
-
-    MainGrid mainGrid;
-
-    final static int SHIPS = 0;
+    final static int UNITS = 0;
     final static int PROJECTILES = 1;
     final static int IN_TRANSIT = 2;
     final static int WRECKAGE = 3;
@@ -57,7 +44,7 @@ public class SpacePlane implements Plane{
     public SpacePlane()
     {
         mainGrid = new MainGrid(50,50,5000);
-        Entities[SHIPS] = new ArrayList<Unit>();
+        Entities[UNITS] = new ArrayList<Unit>();
         Entities[PROJECTILES] = new ArrayList<Projectile>();
         //Entities[2] = inTransit;
         Entities[WRECKAGE] = new ArrayList<Wreckage>();
@@ -73,12 +60,16 @@ public class SpacePlane implements Plane{
         Player.THE_PLAYER.addEnemy(enemy);
         enemy.addEnemy(Player.THE_PLAYER);
 
-        SpaceRender.setPlanet(Assets.Planet_Background,0,0,.5f,10);
-        Entities[SHIPS].add(new Unit(10,10, Constant_Names.FEDERATION_GUNBOAT,Player.THE_PLAYER,mainGrid));
-        Entities[SHIPS].add(new Unit(100000,100000,Constant_Names.FEDERATION_GUNBOAT,enemy,mainGrid));
+        SpaceRender.setPlanet(Assets.Planet_Background,0,0,.5f,100);
+
+        Entities[UNITS].add(new Unit(0,0,Constant_Names.FEDERATION_GUNBOAT,enemy,mainGrid));
+        Entities[UNITS].add(new Unit(3*mainGrid.getGridSize(),3*mainGrid.getGridSize(),Constant_Names.FEDERATION_GUNBOAT,Player.THE_PLAYER,mainGrid));
+
+        //for(int i=0;i<10000;i++)
+        //    Entities[UNITS].add(new Unit(0,0, Constant_Names.FEDERATION_SCOUT,Player.THE_PLAYER,mainGrid));
     }
 
-    @Override
+
     public void draw(Batch batch) {
         GL20 gl = Gdx.gl;
         gl.glClearColor(0f,.05f,.1f,1);
@@ -95,12 +86,14 @@ public class SpacePlane implements Plane{
         SpaceRender.drawGrid(mainGrid);
     }
 
-    @Override
+
     public void update() {
         if(ACTIVE)
-            cameraMovement();
-        for(int i=0;i<Entities[SHIPS].size();i++)
-            ((Unit)Entities[SHIPS].get(i)).update(mainGrid);
+            this.cameraMovement();
+        for(int i = 0; i<Entities[UNITS].size(); i++)
+            Entities[PROJECTILES].addAll(((Unit)Entities[UNITS].get(i)).update(mainGrid));
+        for(int i=0;i<Entities[PROJECTILES].size();i++)
+            ((Projectile)Entities[PROJECTILES].get(i)).update();
     }
 
     private void manageSounds()
@@ -111,9 +104,9 @@ public class SpacePlane implements Plane{
             return;
         }
         int shipCount=0;
-        for(int i=0;i<Entities[SHIPS].size();i++)
+        for(int i=0;i<Entities[UNITS].size();i++)
         {
-            Unit unit = (Unit)Entities[SHIPS].get(i);
+            Unit unit = (Unit)Entities[UNITS].get(i);
             if(camera.frustum.pointInFrustum(unit.getPolygon().getX(),unit.getPolygon().getY(),0))
             {
                 shipCount++;
@@ -131,202 +124,9 @@ public class SpacePlane implements Plane{
         SoundManager.setGlobalVolume(1-(camera.zoom/500f*10));*/
     }
 
-    @Override
-    public void clicked(int x, int y, int button) {
-        Vector3 vector3 = new Vector3(x,y,0);
-        camera.unproject(vector3);
-        Vector2 vector2 = new Vector2(vector3.x,vector3.y);
 
-        if(button==Input.Buttons.LEFT)
-            selectionClick(vector2);
 
-        if(button==Input.Buttons.RIGHT)
-            commandClick(vector2);
-    }
-
-    @Override
-    public void boxSelect(int startX, int startY, int endX, int endY) {
-        Vector3 start = new Vector3(startX,startY,0);
-        Vector3 end = new Vector3(endX,endY,0);
-
-        camera.unproject(start);
-        camera.unproject(end);
-
-        Polygon rPoly = new Polygon(new float[] { 0, 0, end.x-start.x, 0, end.x-start.x,
-                end.y-start.y, 0, end.y-start.y });
-
-        rPoly.setPosition(start.x, start.y);
-
-        if(!Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT))
-            selected.clear();
-
-        for(int i=0;i<Entities[SHIPS].size();i++) {
-            Unit unit = ((Unit) Entities[SHIPS].get(i));
-
-            if(Intersector.overlapConvexPolygons(unit.getPolygon(),rPoly)&&unit.getPlayer().equals(Player.THE_PLAYER))
-            {
-                selected.add(unit);
-            }
-        }
-    }
-
-    private void commandClick(Vector2 vector2)
-    {
-        if(selected.size()==0)
-            return;
-
-        boolean targeted = false;
-
-        for (int i = 0; i < Entities[SHIPS].size(); i++) {
-
-            Unit unit = (Unit) Entities[SHIPS].get(i);
-
-            if (unit.getPolygon().contains(vector2)&&!unit.getPlayer().equals(Player.THE_PLAYER)) {
-
-                for(int j=0;j<selected.size();j++)
-                {
-                        Unit unit2 = selected.get(j);
-                        unit2.setTarget(unit);
-                }
-
-                targeted = true;
-                break;
-            }
-        }
-
-        if(!targeted)
-        {
-            int l = 0;
-
-            int square = (int)Math.sqrt(selected.size())/2;
-
-            for(int j=0;l<selected.size();j++)
-            {
-                int k;
-                for(k=0;l<selected.size()&&k<=j;k++)
-                {
-                    Unit unit2 = selected.get(l);
-                    Vector2 tempVector = new Vector2(vector2.x,vector2.y);
-                    tempVector.x += unit2.getSize() * UNIT_SPACING * (j-square);
-                    tempVector.y += unit2.getSize() * UNIT_SPACING * (k-square);
-                    unit2.setMove(tempVector);
-                    l++;
-                }
-
-                int tempK = k;
-
-                for(k = j; l<selected.size() && k >=0; k--)
-                {
-                    Unit unit2 = selected.get(l);
-                    Vector2 tempVector = new Vector2(vector2.x,vector2.y);
-                    tempVector.x += unit2.getSize()* UNIT_SPACING * (k-square);
-                    tempVector.y += unit2.getSize()* UNIT_SPACING * (tempK-square);
-                    unit2.setMove(tempVector);
-                    l++;
-                }
-            }
-        }
-    }
-
-    private void selectionClick(Vector2 vector2)
-    {
-
-        boolean added = false;
-
-        for (int i = 0; i < Entities[SHIPS].size(); i++) {
-
-            Unit unit = (Unit) Entities[SHIPS].get(i);
-
-            if (unit.getPolygon().contains(vector2)&&unit.getPlayer().equals(Player.THE_PLAYER)) {
-
-                if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT))
-                    selected.add(unit);
-                else {
-                    selected.clear();
-                    selected.add(unit);
-                }
-
-                added = true;
-                break;
-            }
-        }
-
-        if (!added)
-            selected.clear();
-    }
-
-    private void cameraMovement()
-    {
-        float cameraSpeed = 5;
-
-        if(Gdx.input.isKeyPressed(Settings.TOGGLE_CAMERA_SPEED))
-            cameraSpeed = 10;
-
-        if(Gdx.input.isKeyPressed(Settings.PAN_DOWN))
-        {
-            camera.translate(0,-cameraSpeed*camera.zoom);
-            SpaceRender.OffsetY-=cameraSpeed*camera.zoom;
-        }
-
-        if(Gdx.input.isKeyPressed(Settings.PAN_UP))
-        {
-            camera.translate(0,cameraSpeed*camera.zoom);
-            SpaceRender.OffsetY+=cameraSpeed*camera.zoom;
-        }
-
-        if(Gdx.input.isKeyPressed(Settings.PAN_RIGHT))
-        {
-            camera.translate(cameraSpeed*camera.zoom,0);
-            SpaceRender.OffsetX+=cameraSpeed*camera.zoom;
-        }
-
-        if(Gdx.input.isKeyPressed(Settings.PAN_LEFT))
-        {
-            camera.translate(-cameraSpeed*camera.zoom,0);
-            SpaceRender.OffsetX-=cameraSpeed*camera.zoom;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.Q))
-        {
-            camera.zoom *= 1.05;
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.E))
-        {
-            camera.zoom *= 0.95;
-        }
-        if(camera.zoom<2)
-            camera.zoom=2;
-        if(camera.zoom>500)
-            camera.zoom=500;
-    }
-
-    @Override
-    public void planeSwitch() {
-        if(ACTIVE)
-            ACTIVE = false;
-        else
-            ACTIVE = true;
-    }
-
-    @Override
     public void addPlane(Plane plane) {
         surface = (SurfacePlane) plane;
-    }
-
-    @Override
-    public OrthographicCamera getCamera() {
-        return camera;
-    }
-
-    @Override
-    public void scrolled(float amount) {
-        if(amount<0)
-            amount = .9f;
-        else
-            amount = 1.1f;
-        camera.zoom*=amount;
-        if(camera.zoom<2)
-            camera.zoom=2;
-        if(camera.zoom>500)
-            camera.zoom=500;
     }
 }

@@ -9,6 +9,8 @@ import com.zodiac.Support.Assets;
 import com.zodiac.Support.Constant_Names;
 import com.zodiac.Support.Utilities;
 
+import java.util.ArrayList;
+
 /**
  * Created by Immortan on 3/19/2016.
  */
@@ -57,13 +59,13 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
         if(type== Constant_Names.FEDERATION_GUNBOAT)
         {
-            maxVelocity = 100;
-            acceleration = .1f;
+            maxVelocity = 10000;
+            acceleration = 1f;
             turnRate = 1f;
             size = 4;
             turrets = new Turret[2];
-            turrets[0] = new Turret(getWidth()/2,getHeight()/2,this,9,45,270,Constant_Names.FEDERATION_500MM);
-            turrets[1] = new Turret(getWidth()/2,getHeight()/2,this,169,45,90,Constant_Names.FEDERATION_500MM);
+            turrets[0] = new Turret(getWidth()/2,getHeight()/2,this,9,45,90,Constant_Names.FEDERATION_TURRET_500MM);
+            turrets[1] = new Turret(getWidth()/2,getHeight()/2,this,169,45,270,Constant_Names.FEDERATION_TURRET_500MM);
         }
     }
 
@@ -77,14 +79,22 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
 
     }
 
-    public void update(MainGrid mainGrid)
+    public ArrayList<Projectile> update(MainGrid mainGrid)
     {
         if(move(mainGrid))
             mainGrid.unitAt(this);
 
+        ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+
         if(turrets!=null)
+        {
             for(int i=0;i<turrets.length;i++)
-                turrets[i].update();
+            {
+                projectiles.addAll(turrets[i].update(mainGrid));
+            }
+        }
+
+        return projectiles;
     }
 
 
@@ -94,11 +104,6 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         //This means the ship has no move command
         if(moveCoordinates==null)
             return false;
-
-        //Move the turrets only if the ship moves
-        if(turrets!=null)
-            for(int i=0;i<turrets.length;i++)
-                turrets[i].setPosition();
 
         //Calculate target angle using inverse tangent
         //lookup table decreases runtime
@@ -131,21 +136,22 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         //Only turn if the unit does not have to turn in place or is facing the correct angle
         if(!turnInPlace||getPolygon().getRotation()==targetAngle)
         {
-            //Here we nudge the unit regardless of direction to smooth movement
-            float boostX = MathUtils.cosDeg(targetAngle+90)*velocity*.1f;
-            float boostY = MathUtils.sinDeg(targetAngle+90)*velocity*.1f;
-
             //Apply movement differentials
             this.getPolygon().setPosition(getPolygon().getX()+velocityX, getPolygon().getY()+velocityY);
-            //this.getPolygon().setPosition(getPolygon().getX()+boostX, getPolygon().getY()+boostY);
 
             //Change velocity depending on current factors
             velocityX = MathUtils.cosDeg(getPolygon().getRotation()+90)* velocity;
             velocityY = MathUtils.sinDeg(getPolygon().getRotation()+90)* velocity;
         }
 
+        //Move the turrets only if the ship moves
+        if(turrets!=null)
+            for(int i=0;i<turrets.length;i++)
+                turrets[i].setPosition();
+
+
         //Check if the unit is almost at its destination
-        if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)< size * 100)
+        if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)< velocity * size)
         {
             slowing = true;
         }
@@ -200,17 +206,16 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
         float boostX = velocity * .5f;
         float boostY = velocity * .5f;
 
+        //Apply deceleration
+        velocity *=.9;
+
         if (moveCoordinates.x - getPolygon().getX() < 0)
             boostX*=-1;
         if (moveCoordinates.y - getPolygon().getY() < 0)
             boostY*=-1;
 
-
         //rotate(targetAngle);
         getPolygon().setPosition(getPolygon().getX()+boostX,getPolygon().getY()+boostY);
-
-        //Apply deceleration
-        velocity *=.9;
 
         //If the unit is barely moving we stop and clear its move coordinates
         if(Utilities.distanceHeuristic(this,moveCoordinates.x,moveCoordinates.y)<size*5)
@@ -224,6 +229,12 @@ public class Unit extends GameObject implements Moveable, Killable, Selectable{
             moveCoordinates = null;
             slowing = false;
         }
+
+        //Move the turrets only if the ship moves
+        if(turrets!=null)
+            for(int i=0;i<turrets.length;i++)
+                turrets[i].setPosition();
+
     }
 
     public void drawTurrets(Batch batch)
