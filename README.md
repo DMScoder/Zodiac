@@ -1,5 +1,5 @@
 # What is Zodiac?
-Zodiac is an in progress grand real time strategy game that encompasses land and space combat as well as everything in between.
+Zodiac is an in progress real time  grand strategy game that encompasses land and space combat as well as everything in between.
 
 I noticed that very few games merge land and space combat and that there are many interesting oppurtunities in doing so. The end goal is to have a full space to land siege realized and for the player to experience the chaotic brutality at every single state: The initial space battle. Taking over the planet's orbit. Fighting in the atmosphere. Deploying troops onto the surface. Enclosing on the enemy installations and finally crushing their capital city.
 
@@ -19,3 +19,8 @@ Individual missions / battles are planned to take a significant amount of time t
 Even though the Z axis will play heavily for air units and units descending / ascending from / into space, all units will be two dimensional. I believe that if the game engine were to be in 3D, the game would reach unacceptable lag and would suffer from a UI standpoint. The game is specifically designed to have a very large number of active entities on the map and to retain dead ones to really give the feeling of battlefield carnage as time goes on.
 
 To maintain a distinct z-axis, a lot of work is being put into the scaling and movement of units in the atmosphere to make them seem as if they are actually changing height.
+
+#Future Plans
+A full campaign is planned to give the player a custom tailored fun experience
+
+A galactic war / more open world mode is currently being drafted and may be included somewhere down the line if it makes gameplay sense.
