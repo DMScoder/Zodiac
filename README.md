@@ -3,7 +3,7 @@ Zodiac is an in progress real time  grand strategy game that encompasses land an
 
 I noticed that very few games merge land and space combat and that there are many interesting oppurtunities in doing so. The end goal is to have a full space to land siege realized and for the player to experience the chaotic brutality at every single state: The initial space battle. Taking over the planet's orbit. Fighting in the atmosphere. Deploying troops onto the surface. Enclosing on the enemy installations and finally crushing their capital city.
 
-#Gameplay Concepts
+# Gameplay Concepts
 Because managing both land and space is both a gameplay and UI challenge, I've decided to split them into two entirely seperate views, perhaps making them both visible at the same time during a later date. By default, the 'space' key toggles between them.
 
 After a certain zoom height, icons take the shape of units so that the player can keep tabs on them even when zoomed out to the maximum. This applies to both land and space structures and units.
@@ -20,7 +20,7 @@ Even though the Z axis will play heavily for air units and units descending / as
 
 To maintain a distinct z-axis, a lot of work is being put into the scaling and movement of units in the atmosphere to make them seem as if they are actually changing height.
 
-#Future Plans
+# Future Plans
 A full campaign is planned to give the player a custom tailored fun experience
 
 A galactic war / more open world mode is currently being drafted and may be included somewhere down the line if it makes gameplay sense.
